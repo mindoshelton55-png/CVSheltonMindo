@@ -2,13 +2,26 @@
 <html lang="pt-MZ">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="theme-color" content="#080b12" />
     <meta name="color-scheme" content="dark" />
     <title>Shelton Mindo | Software Developer</title>
     <meta
       name="description"
       content="Portfólio de Shelton Mindo, finalista de Engenharia Informática no ISCTEM. Flutter, Firebase, bases de dados, DevOps, redes e cibersegurança."
+    />
+    <meta name="author" content="Shelton Mindo" />
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- TROQUE https://SEU-DOMINIO pelo endereço real (canonical, og:url, og:image, JSON-LD) -->
+    <link rel="canonical" href="https://SEU-DOMINIO/" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2355e2ff'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='800' text-anchor='middle' font-family='sans-serif' fill='%2306111c'%3ES%3C/text%3E%3C/svg%3E"
     />
     <meta property="og:title" content="Shelton Mindo | Software Developer" />
     <meta
@@ -17,31 +30,63 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_MZ" />
+    <meta property="og:url" content="https://SEU-DOMINIO/" />
+    <meta property="og:image" content="https://SEU-DOMINIO/img/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://SEU-DOMINIO/img/og-cover.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shelton Mindo",
+        "url": "https://SEU-DOMINIO/",
+        "jobTitle": "Software Developer",
+        "sameAs": [
+          "https://www.linkedin.com/in/shelton-mindo-64147b34a",
+          "https://github.com/O-TEU-USER"
+        ],
+        "knowsAbout": [
+          "Flutter",
+          "Dart",
+          "Firebase",
+          "MySQL",
+          "GitHub Actions",
+          "Redes",
+          "Cibersegurança"
+        ]
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
         --bg: #080b12;
+        --bg-alt: #0b1019;
         --surface: #101621;
         --text: #f4f7fb;
         --muted: #a5b2c3;
         --cyan: #55e2ff;
         --blue: #1687f8;
         --green: #73e5ad;
+        --ink: #06111c;
         --border: rgba(255, 255, 255, 0.1);
-        --font: "Manrope", system-ui, sans-serif;
-        --mono: "DM Mono", monospace;
+        --line-cyan: rgba(85, 226, 255, 0.3);
+        --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
         --r: 16px;
         --header: 76px;
+        --ease: 0.2s ease;
+        color-scheme: dark;
       }
-
       *,
       *::before,
       *::after {
@@ -49,7 +94,8 @@
       }
       html {
         scroll-behavior: smooth;
-        scroll-padding-top: 90px;
+        scroll-padding-top: calc(var(--header) + 16px);
+        -webkit-text-size-adjust: 100%;
       }
       body {
         margin: 0;
@@ -57,9 +103,7 @@
         color: var(--text);
         font: 400 1rem/1.75 var(--font);
         -webkit-font-smoothing: antialiased;
-      }
-      body.menu-open {
-        overflow: hidden;
+        text-rendering: optimizeLegibility;
       }
       a {
         color: inherit;
@@ -69,13 +113,18 @@
       select {
         font: inherit;
       }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
       :focus-visible {
         outline: 2px solid var(--cyan);
         outline-offset: 4px;
       }
       ::selection {
         background: var(--cyan);
-        color: #06111c;
+        color: var(--ink);
       }
       h1,
       h2,
@@ -87,6 +136,7 @@
       h2,
       h3 {
         line-height: 1.15;
+        text-wrap: balance;
       }
       h1 {
         margin-bottom: 24px;
@@ -100,6 +150,9 @@
       }
       h3 {
         letter-spacing: -0.03em;
+      }
+      p {
+        text-wrap: pretty;
       }
       img {
         display: block;
@@ -151,7 +204,7 @@
         padding: 10px 16px;
         border-radius: 8px;
         background: var(--cyan);
-        color: #06111c;
+        color: var(--ink);
         font-weight: 700;
       }
       .skip:focus {
@@ -163,6 +216,7 @@
         position: sticky;
         top: 0;
         z-index: 100;
+        padding-top: env(safe-area-inset-top);
         border-bottom: 1px solid var(--border);
         background: rgba(8, 11, 18, 0.92);
         backdrop-filter: blur(18px);
@@ -189,7 +243,7 @@
         place-items: center;
         border-radius: 10px;
         background: linear-gradient(135deg, var(--cyan), var(--blue));
-        color: #06111c;
+        color: var(--ink);
       }
       .brand b {
         margin-left: -8px;
@@ -203,15 +257,15 @@
         font-size: 0.82rem;
       }
       .nav-links a {
-        transition: color 0.2s;
+        transition: color var(--ease);
       }
       .nav-links a:hover,
-      .nav-links a[aria-current="true"] {
+      .nav-links a[aria-current="location"] {
         color: var(--cyan);
       }
       .nav-links .nav-cta {
         padding: 9px 15px;
-        border: 1px solid rgba(85, 226, 255, 0.3);
+        border: 1px solid var(--line-cyan);
         border-radius: 9px;
         color: var(--cyan);
       }
@@ -226,24 +280,19 @@
         color: var(--text);
         cursor: pointer;
       }
-
-      /* Idiomas */
-      .language-switcher {
-        display: flex;
-        align-items: center;
-      }
       .language-switcher select {
         max-width: 160px;
         min-height: 40px;
         padding: 8px 10px;
-        border: 1px solid rgba(85, 226, 255, 0.3);
+        border: 1px solid var(--line-cyan);
         border-radius: 9px;
         background: var(--surface);
         color: var(--cyan);
-        font-family: var(--font);
         font-size: 0.78rem;
         cursor: pointer;
       }
+
+      /* Google Translate (escondido) */
       #google_translate_element {
         position: absolute;
         width: 1px;
@@ -252,19 +301,13 @@
         clip-path: inset(50%);
       }
       .goog-te-banner-frame,
-      .goog-te-banner-frame.skiptranslate,
       .goog-te-gadget,
-      .goog-te-balloon-frame {
+      .goog-te-balloon-frame,
+      .skiptranslate {
         display: none !important;
       }
       body {
         top: 0 !important;
-      }
-      .skiptranslate {
-        display: none !important;
-      }
-      iframe.goog-te-menu-frame {
-        max-width: 100% !important;
       }
 
       /* Botões */
@@ -281,15 +324,15 @@
         font-weight: 800;
         cursor: pointer;
         transition:
-          transform 0.2s,
-          border-color 0.2s;
+          transform var(--ease),
+          border-color var(--ease);
       }
       .btn:hover {
         transform: translateY(-2px);
       }
       .btn-primary {
         background: linear-gradient(110deg, var(--cyan), #6faaff);
-        color: #06111c;
+        color: var(--ink);
       }
       .btn-secondary {
         border-color: var(--border);
@@ -347,7 +390,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
-        margin-top: 42px;
+        margin: 42px 0 0;
         padding-top: 23px;
         border-top: 1px solid var(--border);
       }
@@ -364,13 +407,14 @@
         position: relative;
         min-width: 0;
         padding: 30px 0;
+        overflow-x: clip;
       }
       .code-window {
         overflow: hidden;
         border: 1px solid rgba(120, 175, 230, 0.2);
         border-radius: var(--r);
         background: rgba(16, 22, 33, 0.96);
-        box-shadow: 0 30px 90px #0005;
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.33);
         transform: rotate(1deg);
       }
       .window-top {
@@ -415,6 +459,9 @@
         color: #a5efc2;
       }
       .code-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         padding: 13px 19px;
         border-top: 1px solid var(--border);
         color: #a9b8ca;
@@ -424,7 +471,7 @@
         position: absolute;
         z-index: 2;
         padding: 9px 12px;
-        border: 1px solid #55e2ff40;
+        border: 1px solid rgba(85, 226, 255, 0.25);
         border-radius: 9px;
         background: #111c2b;
         color: #c5f6ff;
@@ -432,11 +479,11 @@
       }
       .chip.top {
         top: 10px;
-        right: -12px;
+        right: 0;
       }
       .chip.bottom {
         bottom: 10px;
-        left: -12px;
+        left: 0;
       }
 
       /* Sobre */
@@ -460,36 +507,51 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-        margin-top: 27px;
+        margin: 27px 0 0;
       }
       .fact {
         padding: 16px;
         border: 1px solid var(--border);
         border-radius: 11px;
-        background: #ffffff05;
+        background: rgba(255, 255, 255, 0.02);
       }
       .fact dt {
         font-size: 0.875rem;
         font-weight: 700;
+        color: var(--text);
       }
       .fact dd {
         margin: 4px 0 0;
         font-size: 0.8rem;
       }
 
-      /* Experiência */
+      /* Cartões e etiquetas */
       .alt {
         border-block: 1px solid var(--border);
-        background: #0b1019;
-      }
-      .exp-list {
-        display: grid;
-        gap: 16px;
+        background: var(--bg-alt);
       }
       .card {
         border: 1px solid var(--border);
         border-radius: var(--r);
         background: linear-gradient(145deg, #111925, #0d131d);
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .tags li {
+        padding: 5px 9px;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        color: #c8d3e1;
+        font-size: 0.72rem;
+      }
+
+      /* Experiência */
+      .exp-list {
+        display: grid;
+        gap: 16px;
       }
       .exp {
         display: grid;
@@ -511,24 +573,9 @@
         font-size: 0.875rem;
         font-weight: 600;
       }
-      .exp p:last-of-type {
+      .exp-desc {
         color: var(--muted);
         font-size: 0.9rem;
-      }
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-      }
-      .tags li {
-        padding: 5px 9px;
-        border: 1px solid var(--border);
-        border-radius: 5px;
-        color: #c8d3e1;
-        font-size: 0.72rem;
       }
 
       /* Projetos */
@@ -537,18 +584,25 @@
         align-items: end;
         justify-content: space-between;
         gap: 25px;
+        max-width: none;
       }
       .projects-head > p {
         max-width: 280px;
-        color: var(--muted);
-        font-size: 0.875rem;
       }
       .grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 22px;
       }
+      .grid > li {
+        display: flex;
+        min-width: 0;
+      }
+      .grid > li.wide {
+        grid-column: 1/-1;
+      }
       .project {
+        width: 100%;
         min-width: 0;
         overflow: hidden;
         display: flex;
@@ -559,10 +613,9 @@
       }
       .project:hover {
         transform: translateY(-4px);
-        border-color: #55e2ff4d;
+        border-color: rgba(85, 226, 255, 0.3);
       }
       .project.featured {
-        grid-column: 1/-1;
         display: grid;
         grid-template-columns: 1.15fr 1fr;
       }
@@ -580,7 +633,11 @@
         gap: 14px;
         padding: 30px 22px;
         background:
-          radial-gradient(circle at 50% 30%, #55e2ff1f, transparent 65%),
+          radial-gradient(
+            circle at 50% 30%,
+            rgba(85, 226, 255, 0.12),
+            transparent 65%
+          ),
           #0a111b;
         border-bottom: 1px solid var(--border);
       }
@@ -603,9 +660,9 @@
         position: relative;
         overflow: hidden;
         margin: 0;
-        border: 1px solid #78afe640;
+        border: 1px solid rgba(120, 175, 230, 0.25);
         background: #0f1722;
-        box-shadow: 0 18px 50px #0006;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
       }
       .shot img {
         position: absolute;
@@ -615,9 +672,9 @@
         object-fit: cover;
       }
       .shot figcaption {
+        display: none;
         position: absolute;
         inset: 0;
-        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -626,10 +683,8 @@
         font: 0.7rem var(--mono);
         text-align: center;
       }
-      .shot figcaption small {
-        font-size: 0.62rem;
-        opacity: 0.7;
-        word-break: break-all;
+      .shot.no-img figcaption {
+        display: flex;
       }
       .shot.phone {
         flex: 1 1 0;
@@ -651,9 +706,7 @@
         content: "";
         position: absolute;
         z-index: 1;
-        top: 0;
-        left: 0;
-        right: 0;
+        inset: 0 0 auto;
         height: 22px;
         background: #141d2b;
       }
@@ -689,20 +742,12 @@
         font-size: 0.7rem;
       }
       .s-progress {
-        background: #43b1ff24;
+        background: rgba(67, 177, 255, 0.14);
         color: #9fe7ff;
       }
-      .s-planned {
-        background: #a67aff24;
-        color: #d0b5ff;
-      }
       .s-done {
-        background: #46dc9624;
+        background: rgba(70, 220, 150, 0.14);
         color: #91f1c2;
-      }
-      .s-learning {
-        background: #ffb75024;
-        color: #ffd79a;
       }
       .body h3 {
         margin-bottom: 10px;
@@ -714,6 +759,42 @@
         font-size: 0.9rem;
         line-height: 1.85;
       }
+      .ps {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .ps > div {
+        padding: 13px 15px;
+        border: 1px solid var(--border);
+        border-left-width: 3px;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .ps .prob {
+        border-left-color: #ffb86b;
+      }
+      .ps .sol {
+        border-left-color: var(--cyan);
+      }
+      .ps h4 {
+        margin: 0 0 4px;
+        font: 500 0.7rem var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .ps .prob h4 {
+        color: #ffb86b;
+      }
+      .ps .sol h4 {
+        color: var(--cyan);
+      }
+      .ps p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.75;
+      }
       .foot {
         display: flex;
         justify-content: space-between;
@@ -723,6 +804,13 @@
         border-top: 1px solid var(--border);
         color: #92a2b6;
         font-size: 0.75rem;
+      }
+      .foot a {
+        color: var(--cyan);
+        font-weight: 700;
+      }
+      .foot a:hover {
+        text-decoration: underline;
       }
       .tags + .foot {
         margin-top: 22px;
@@ -738,14 +826,14 @@
         padding: 23px 20px;
         border: 1px solid var(--border);
         border-radius: 13px;
-        background: #ffffff05;
+        background: rgba(255, 255, 255, 0.02);
         transition:
-          transform 0.2s,
-          border-color 0.2s;
+          transform var(--ease),
+          border-color var(--ease);
       }
       .skill:hover {
         transform: translateY(-3px);
-        border-color: #55e2ff4d;
+        border-color: rgba(85, 226, 255, 0.3);
       }
       .skill-icon {
         color: var(--cyan);
@@ -767,26 +855,29 @@
         padding-block: 100px;
         border-top: 1px solid var(--border);
         background:
-          radial-gradient(ellipse at 50% 100%, #1687f824, transparent 65%),
-          #0b1019;
+          radial-gradient(
+            ellipse at 50% 100%,
+            rgba(22, 135, 248, 0.14),
+            transparent 65%
+          ),
+          var(--bg-alt);
         text-align: center;
       }
-      .contact .eyebrow {
+      .contact .eyebrow,
+      .contact .actions {
         justify-content: center;
       }
       .contact h2 {
         font-size: clamp(2.6rem, 6vw, 4.4rem);
       }
-      .contact p.desc {
+      .contact .desc {
         max-width: 560px;
         margin: 12px auto 0;
         color: var(--muted);
       }
-      .contact .actions {
-        justify-content: center;
-      }
       .site-footer {
         border-top: 1px solid var(--border);
+        padding-bottom: env(safe-area-inset-bottom);
       }
       .footer {
         min-height: 82px;
@@ -800,18 +891,191 @@
       .footer a:last-child:hover {
         color: var(--cyan);
       }
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
 
+      .readme-btn {
+        padding: 4px 10px;
+        border: 1px solid var(--line-cyan);
+        border-radius: 7px;
+        background: rgba(85, 226, 255, 0.06);
+        color: var(--cyan);
+        font: 500 0.72rem var(--mono);
+        cursor: pointer;
+        transition: background var(--ease);
+      }
+      .readme-btn:hover {
+        background: rgba(85, 226, 255, 0.16);
+      }
+      html:has(dialog[open]) {
+        overflow: hidden;
+      }
+      .rd {
+        width: min(1020px, calc(100% - 24px));
+        height: min(86vh, 840px);
+        max-width: none;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        background: #0d1117;
+        color: #c9d1d9;
+        overflow: hidden;
+      }
+      .rd[open] {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+      }
+      .rd::backdrop {
+        background: rgba(3, 6, 12, 0.78);
+        backdrop-filter: blur(4px);
+      }
+      .rd-top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        background: #161b22;
+        font: 0.78rem var(--mono);
+      }
+      .rd-file {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .rd-close {
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+      }
+      .rd-main {
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+        min-height: 0;
+      }
+      .rd-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        overflow: auto;
+        padding: 10px;
+        border-right: 1px solid var(--border);
+        background: #0a0e14;
+      }
+      .rd-nav button {
+        padding: 8px 10px;
+        border: 0;
+        border-radius: 8px;
+        background: none;
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-align: left;
+        cursor: pointer;
+      }
+      .rd-nav button:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .rd-nav button[aria-current="true"] {
+        background: rgba(85, 226, 255, 0.12);
+        color: var(--cyan);
+      }
+      .rd-body {
+        overflow: auto;
+        padding: 28px 34px;
+        font-size: 0.92rem;
+        line-height: 1.7;
+      }
+      .rd-body h1 {
+        margin: 0 0 10px;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--border);
+        font-size: 1.8rem;
+        letter-spacing: -0.03em;
+      }
+      .rd-body h2 {
+        margin: 26px 0 10px;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--border);
+        font-size: 1.2rem;
+        letter-spacing: -0.02em;
+      }
+      .rd-body p {
+        margin: 0 0 14px;
+      }
+      .rd-body blockquote {
+        margin: 0 0 14px;
+        padding: 2px 14px;
+        border-left: 3px solid #30363d;
+        color: #9aa7b8;
+      }
+      .rd-body ul {
+        margin: 0 0 14px;
+        padding-left: 22px;
+        list-style: disc;
+      }
+      .rd-body li {
+        margin: 3px 0;
+      }
+      .rd-body code {
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: rgba(110, 118, 129, 0.25);
+        font: 0.82em var(--mono);
+      }
+      .rd-body a {
+        color: var(--cyan);
+      }
+      .rd-pills {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+      .rd-flow {
+        list-style: none !important;
+        padding: 14px !important;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #0a0e14;
+      }
+      .rd-shots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .rd-shots img {
+        max-height: 280px;
+        width: auto;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      @media (max-width: 700px) {
+        .rd {
+          width: 100%;
+          height: 100%;
+          max-height: 100%;
+          border-radius: 0;
+        }
+        .rd-main {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto minmax(0, 1fr);
+        }
+        .rd-nav {
+          flex-direction: row;
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .rd-nav button {
+          white-space: nowrap;
+        }
+        .rd-body {
+          padding: 20px 18px;
+        }
+      }
       .js .reveal {
         opacity: 0;
         transform: translateY(18px);
@@ -824,6 +1088,137 @@
         transform: none;
       }
 
+      /* Introdução com citação */
+      .intro {
+        display: none;
+      }
+      html.intro-on .intro {
+        display: grid;
+      }
+      html.intro-on body {
+        overflow: hidden;
+        animation: unlock 0s 12s forwards;
+      }
+      .intro {
+        --intro-ms: 8000ms;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(ellipse at 50% 35%, #12254a, transparent 70%),
+          var(--bg);
+        text-align: center;
+        transition:
+          opacity 0.6s,
+          visibility 0.6s;
+        animation: introFail 0s 12s forwards;
+      }
+      .intro.out {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .intro-inner {
+        max-width: 780px;
+      }
+      .intro-mark {
+        display: inline-grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        margin-bottom: 34px;
+        border-radius: 13px;
+        background: linear-gradient(135deg, var(--cyan), var(--blue));
+        color: var(--ink);
+        font-weight: 800;
+        animation: introUp 0.8s both;
+      }
+      .intro blockquote {
+        margin: 0;
+      }
+      .intro-quote-text {
+        margin: 0 0 22px;
+        font-size: clamp(1.7rem, 4.6vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+        animation: introUp 1s 0.5s both;
+      }
+      .intro footer {
+        display: grid;
+        gap: 2px;
+        animation: introUp 1s 2s both;
+      }
+      .intro cite {
+        color: var(--cyan);
+        font: 500 0.85rem var(--mono);
+        font-style: normal;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      .intro footer span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      .intro-sub {
+        margin: 34px 0 0;
+        color: #c3cddb;
+        font-size: 0.95rem;
+        animation: introUp 1s 3.4s both;
+      }
+      .intro-skip {
+        margin-top: 22px;
+        padding: 11px 18px;
+        border: 1px solid rgba(85, 226, 255, 0.35);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--cyan);
+        font-weight: 700;
+        cursor: pointer;
+        animation: introUp 0.8s 1.2s both;
+      }
+      .intro-skip:hover {
+        border-color: var(--cyan);
+      }
+      .intro-bar {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        transform-origin: left;
+        background: linear-gradient(90deg, var(--cyan), var(--blue));
+        animation: introBar var(--intro-ms) linear forwards;
+      }
+      @keyframes introUp {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+      }
+      @keyframes introBar {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+      /* salvaguarda: se o JavaScript falhar, a introdução nunca bloqueia o site */
+      @keyframes introFail {
+        to {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+      }
+      @keyframes unlock {
+        to {
+          overflow: visible;
+        }
+      }
+
       @media (max-width: 1000px) {
         .hero {
           grid-template-columns: 1fr;
@@ -833,9 +1228,6 @@
         .hero-visual {
           width: min(650px, 100%);
           margin-inline: auto;
-        }
-        .about {
-          gap: 35px;
         }
         .skills {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -853,7 +1245,12 @@
           border-bottom: 1px solid var(--border);
         }
       }
-
+      @media (max-width: 900px) {
+        .about {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
       @media (max-width: 700px) {
         :root {
           --header: 68px;
@@ -875,7 +1272,7 @@
           gap: 0;
           padding: 14px 20px 24px;
           border-bottom: 1px solid var(--border);
-          background: #0b1019;
+          background: var(--bg-alt);
         }
         .nav-links.open {
           display: flex;
@@ -908,14 +1305,11 @@
           padding: 20px 14px;
           font-size: 0.7rem;
         }
-        .about,
         .grid,
         .skills,
-        .exp {
+        .exp,
+        .facts {
           grid-template-columns: 1fr;
-        }
-        .about {
-          gap: 12px;
         }
         .exp {
           gap: 10px;
@@ -923,9 +1317,6 @@
         }
         .projects-head {
           display: block;
-        }
-        .project.featured {
-          grid-column: auto;
         }
         .contact .actions {
           flex-direction: column;
@@ -938,14 +1329,7 @@
           flex-basis: 100%;
           order: 3;
         }
-        .chip.top {
-          right: 0;
-        }
-        .chip.bottom {
-          left: 0;
-        }
       }
-
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -960,23 +1344,100 @@
           opacity: 1;
           transform: none;
         }
+        .intro-bar {
+          display: none;
+        }
+      }
+      @media print {
+        .intro,
+        .site-header,
+        .skip,
+        .hero-visual,
+        .menu-toggle,
+        .actions,
+        #google_translate_element {
+          display: none !important;
+        }
+        :root {
+          --bg: #fff;
+          --text: #000;
+          --muted: #333;
+          --cyan: #036;
+          --border: #ccc;
+        }
+        body {
+          background: #fff;
+          color: #000;
+        }
+        .js .reveal {
+          opacity: 1;
+          transform: none;
+        }
+        .card,
+        .alt,
+        .contact {
+          background: none;
+        }
+        .grad {
+          -webkit-text-fill-color: currentColor;
+          background: none;
+        }
       }
     </style>
 
     <script>
-      document.documentElement.classList.add("js");
+      /* Marca JS ativo e decide se mostra a introdução (1x por sessão, nunca em links diretos) */
+      (function () {
+        var r = document.documentElement;
+        r.classList.add("js");
+        try {
+          if (!sessionStorage.getItem("introSeen") && !location.hash)
+            r.classList.add("intro-on");
+        } catch (e) {
+          if (!location.hash) r.classList.add("intro-on");
+        }
+      })();
     </script>
   </head>
 
   <body>
+    <div
+      class="intro"
+      id="intro"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Introdução"
+    >
+      <div class="intro-inner">
+        <span class="intro-mark" aria-hidden="true">S</span>
+        <blockquote>
+          <p class="intro-quote-text">
+            “A simplicidade é pré-requisito da fiabilidade.”
+          </p>
+          <footer>
+            <cite translate="no">Edsger W. Dijkstra</cite
+            ><span>Pioneiro da ciência da computação</span>
+          </footer>
+        </blockquote>
+        <p class="intro-sub">Bem-vindo ao portfólio de Shelton Mindo</p>
+        <button type="button" class="intro-skip">Entrar no portfólio ↓</button>
+      </div>
+      <div class="intro-bar" aria-hidden="true"></div>
+    </div>
+
     <a class="skip" href="#main">Saltar para o conteúdo</a>
 
     <header class="site-header">
       <nav class="nav container" aria-label="Navegação principal">
-        <a class="brand" href="#inicio" aria-label="shelton.dev — início">
-          <span class="brand-mark" aria-hidden="true">S</span>shelton<b>.dev</b>
-        </a>
-
+        <a
+          class="brand"
+          href="#inicio"
+          aria-label="shelton.dev — início"
+          translate="no"
+          ><span class="brand-mark" aria-hidden="true">S</span>shelton<b
+            >.dev</b
+          ></a
+        >
         <button
           class="menu-toggle"
           type="button"
@@ -986,14 +1447,12 @@
         >
           ☰
         </button>
-
         <div class="nav-links" id="nav-links">
           <a href="#sobre">Sobre</a>
           <a href="#experiencia">Experiência</a>
           <a href="#projetos">Projetos</a>
           <a href="#competencias">Competências</a>
           <a href="#contacto" class="nav-cta">Contacto ↗</a>
-
           <div class="language-switcher">
             <select id="language-selector" aria-label="Selecionar idioma">
               <option value="pt">🇲🇿 Português</option>
@@ -1006,44 +1465,51 @@
     </header>
 
     <main id="main">
-      <section class="hero container" id="inicio">
+      <section class="hero container" id="inicio" aria-labelledby="titulo">
         <div>
           <p class="eyebrow">Engenharia Informática · Moçambique</p>
           <div class="badge">
-            <span class="pulse" aria-hidden="true"></span>Software · Dados ·
-            Infraestrutura
+            <span class="pulse" aria-hidden="true"></span>A transformar
+            conhecimento em soluções
           </div>
-          <h1>
-            Construo soluções <span class="grad">para problemas reais.</span>
+          <h1 id="titulo">
+            Software que resolve <span class="grad">problemas de verdade.</span>
           </h1>
           <p class="lead">
-            Sou finalista de Engenharia Informática no ISCTEM, com interesse em
-            desenvolvimento de software, aplicações web e mobile, bases de
-            dados, DevOps, redes e cibersegurança. Gosto de transformar ideias
-            em soluções digitais e aprender através de desafios práticos.
+            Identifico problemas, desenho soluções e transformo ideias em
+            produtos digitais. Sou finalista de Engenharia Informática no
+            ISCTEM, com foco no desenvolvimento de software, sistemas de
+            informação, gestão segura de dados e automação de processos com
+            CI/CD.
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="#projetos">Explorar projetos ↘</a>
-            <a class="btn btn-secondary" href="#contacto">Falar comigo ↗</a>
+            <a class="btn btn-primary" href="#projetos">Ver o que construí ↘</a>
+            <a class="btn btn-secondary" href="#contacto"
+              >Vamos trabalhar juntos ↗</a
+            >
+            <!-- Coloque o PDF em cv/Shelton-Mindo-CV.pdf -->
+            <a class="btn btn-secondary" href="cv/Shelton-Mindo-CV.pdf" download
+              >Descarregar CV ↓</a
+            >
           </div>
           <dl class="meta">
             <div>
-              <dt>Desenvolvimento</dt>
-              <dd>Web &amp; Mobile</dd>
+              <dt>8 projetos</dt>
+              <dd>Mobile, web e dados</dd>
             </div>
             <div>
-              <dt>Dados</dt>
-              <dd>Modelação &amp; Sistemas</dd>
+              <dt>4 apps Flutter</dt>
+              <dd>Com Firebase na cloud</dd>
             </div>
             <div>
-              <dt>Automação</dt>
-              <dd>Git &amp; CI/CD</dd>
+              <dt>2 sistemas</dt>
+              <dd>Já implementados</dd>
             </div>
           </dl>
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <div class="code-window">
+          <div class="code-window" translate="no">
             <div class="window-top">
               <i></i><i></i><i></i><small>shelton.dart</small>
             </div>
@@ -1058,26 +1524,28 @@
     <span class="s">'Help Desk'</span>,
   ];
 
-  <span class="t">String</span> build() =&gt;
-    <span class="s">'Learn. Build. Improve.'</span>;
+  <span class="t">String</span> solve(<span class="t">Problem</span> p) =&gt;
+    <span class="s">'Understand. Build. Ship.'</span>;
 }</code></pre>
-            <div class="code-status">
-              <span
-                class="pulse"
-                style="display: inline-block; margin-right: 8px"
-              ></span
-              >Sempre a aprender. Sempre a construir.
+            <div class="code-status" translate="yes">
+              <span class="pulse"></span>Sempre a aprender. Sempre a construir.
             </div>
           </div>
-          <div class="chip top">⌘ Clean code</div>
-          <div class="chip bottom">↗ Continuous learning</div>
+          <div class="chip top" translate="no">⌘ Clean code</div>
+          <div class="chip bottom" translate="no">↗ Continuous learning</div>
         </div>
       </section>
 
-      <section class="section container reveal" id="sobre">
+      <section
+        class="section container reveal"
+        id="sobre"
+        aria-labelledby="t-sobre"
+      >
         <div class="heading">
           <p class="eyebrow">01 / Sobre mim</p>
-          <h2>Tecnologia com <span class="grad">propósito.</span></h2>
+          <h2 id="t-sobre">
+            Tecnologia com <span class="grad">propósito.</span>
+          </h2>
           <p>
             Formação académica, experiência prática e vontade de continuar a
             evoluir.
@@ -1128,411 +1596,635 @@
         </div>
       </section>
 
-      <section class="section alt" id="experiencia">
+      <section class="section alt" id="experiencia" aria-labelledby="t-exp">
         <div class="container reveal">
           <div class="heading">
             <p class="eyebrow">02 / Experiência</p>
-            <h2>Aprender também é <span class="grad">fazer.</span></h2>
+            <h2 id="t-exp">
+              Aprender também é <span class="grad">fazer.</span>
+            </h2>
             <p>
               Experiências que ligam o conhecimento técnico aos desafios do
               mundo profissional.
             </p>
           </div>
-          <div class="exp-list">
-            <article class="card exp">
-              <div class="exp-tag">TI &amp; CIBERSEGURANÇA</div>
-              <div>
-                <h3>Movitel</h3>
-                <p class="role">
-                  Estágio / experiência prática em ambiente de TI
-                </p>
-                <p>
-                  Contacto com protocolos de rede, diagnóstico de conectividade,
-                  DNS, serviços de domínio e conceitos de segurança informática,
-                  em contexto profissional.
-                </p>
-                <ul class="tags">
-                  <li>Redes</li>
-                  <li>DNS</li>
-                  <li>Active Directory</li>
-                  <li>Segurança</li>
-                  <li>Troubleshooting</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="card exp">
-              <div class="exp-tag">BASES DE DADOS</div>
-              <div>
-                <h3>RAC Seguros</h3>
-                <p class="role">Criação e implementação de base de dados</p>
-                <p>
-                  Solução para estruturar e digitalizar informação anteriormente
-                  mantida em papel, facilitando a organização e a consulta dos
-                  registos.
-                </p>
-                <ul class="tags">
-                  <li>Bases de dados</li>
-                  <li>Modelação</li>
-                  <li>Gestão de informação</li>
-                  <li>Digitalização</li>
-                </ul>
-              </div>
-            </article>
-          </div>
+          <ul class="exp-list">
+            <li>
+              <article class="card exp">
+                <div class="exp-tag">TI &amp; CIBERSEGURANÇA</div>
+                <div>
+                  <h3 translate="no">Movitel</h3>
+                  <!-- Acrescente o período, ex.: "Estágio · Jan–Mar 2025" -->
+                  <p class="role">
+                    Estágio / experiência prática em ambiente de TI
+                  </p>
+                  <p class="exp-desc">
+                    Contacto com protocolos de rede, diagnóstico de
+                    conectividade, DNS, serviços de domínio e conceitos de
+                    segurança informática, em contexto profissional.
+                  </p>
+                  <ul class="tags">
+                    <li>Redes</li>
+                    <li>DNS</li>
+                    <li>Active Directory</li>
+                    <li>Segurança</li>
+                    <li>Troubleshooting</li>
+                  </ul>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="card exp">
+                <div class="exp-tag">BASES DE DADOS</div>
+                <div>
+                  <h3 translate="no">RAC Seguros</h3>
+                  <p class="role">Criação e implementação de base de dados</p>
+                  <p class="exp-desc">
+                    Solução para estruturar e digitalizar informação
+                    anteriormente mantida em papel, facilitando a organização e
+                    a consulta dos registos.
+                  </p>
+                  <ul class="tags">
+                    <li>Bases de dados</li>
+                    <li>Modelação</li>
+                    <li>Gestão de informação</li>
+                    <li>Digitalização</li>
+                  </ul>
+                </div>
+              </article>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section class="section" id="projetos">
+      <section class="section" id="projetos" aria-labelledby="t-proj">
         <div class="container reveal">
-          <div class="heading projects-head" style="max-width: none">
+          <div class="heading projects-head">
             <div>
               <p class="eyebrow">03 / Portfólio técnico</p>
-              <h2>Projetos em <span class="grad">destaque.</span></h2>
+              <h2 id="t-proj">
+                Problemas reais, <span class="grad">soluções construídas.</span>
+              </h2>
             </div>
             <p>
-              Aplicações, plataformas e sistemas, do mobile aos dados e à
-              automação.
+              Cada projeto parte de um problema concreto e mostra a solução que
+              construí.
             </p>
           </div>
 
-          <div class="grid">
-            <article class="card project featured" data-project="alwayz">
-              <div class="media">
-                <figure class="shot browser">
-                  <img
-                    src="img/Alwayz.jpeg"
-                    alt="Screenshot do projeto Alwayz"
-                    loading="lazy"
-                  />
-                  <figcaption>Alwayz<small>img/Alwayz.jpeg</small></figcaption>
-                </figure>
-                <span class="num">01</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Aplicação mobile</span
-                  ><span class="status s-progress">Fase de testes</span>
+          <ul class="grid">
+            <li class="wide">
+              <article class="card project featured" data-project="alwayz">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/Alwayz.jpeg"
+                      alt="Screenshot da aplicação de streaming Alwayz"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>Alwayz</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">01</span>
                 </div>
-                <h3>Alwayz</h3>
-                <p>
-                  Plataforma de streaming desenvolvida com Flutter e Firebase.
-                  Integra autenticação de utilizadores, gestão de dados na cloud
-                  e uma interface moderna para explorar filmes e séries, com
-                  foco na usabilidade, modularidade e evolução contínua.
-                </p>
-                <ul class="tags">
-                  <li>Flutter</li>
-                  <li>Dart</li>
-                  <li>Firebase Auth</li>
-                  <li>Firestore</li>
-                  <li>Storage</li>
-                  <li>Provider</li>
-                </ul>
-                <div class="foot"><span>Mobile · UI · Backend</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Aplicação mobile</span
+                    ><span class="status s-progress">Fase de testes</span>
+                  </div>
+                  <h3 translate="no">Alwayz</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        Explorar filmes e séries exige uma experiência rápida e
+                        organizada; sem arquitetura clara, uma app de streaming
+                        torna-se impossível de evoluir.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Flutter com Provider para um estado modular, Firebase
+                        Auth para contas de utilizador e Firestore e Storage
+                        para guardar catálogo e média na cloud.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>Flutter</li>
+                    <li>Dart</li>
+                    <li>Firebase Auth</li>
+                    <li>Firestore</li>
+                    <li>Storage</li>
+                    <li>Provider</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Mobile · UI · Backend</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="alwayz"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article
-              class="card project featured reverse"
-              data-project="paykaya"
-            >
-              <div class="media">
-                <figure class="shot phone">
-                  <img
-                    src="img/Paykaya.jpeg"
-                    alt="PayKaya ecrã 1"
-                    loading="lazy"
-                  />
-                </figure>
-                <figure class="shot phone">
-                  <img
-                    src="img/paykaya01.jpeg"
-                    alt="PayKaya ecrã 2"
-                    loading="lazy"
-                  />
-                </figure>
-                <figure class="shot phone">
-                  <img
-                    src="img/paykaya02.jpeg"
-                    alt="PayKaya ecrã 3"
-                    loading="lazy"
-                  />
-                </figure>
-                <span class="num">02</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Marketplace mobile</span
-                  ><span class="status s-progress">Fase de testes</span>
+            <li class="wide">
+              <article
+                class="card project featured reverse"
+                data-project="paykaya"
+              >
+                <div class="media">
+                  <figure class="shot phone">
+                    <img
+                      src="img/Paykaya.jpeg"
+                      alt="PayKaya: ecrã inicial com lojas próximas"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>PayKaya 1</figcaption>
+                  </figure>
+                  <figure class="shot phone">
+                    <img
+                      src="img/paykaya01.jpeg"
+                      alt="PayKaya: exploração de produtos"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>PayKaya 2</figcaption>
+                  </figure>
+                  <figure class="shot phone">
+                    <img
+                      src="img/paykaya02.jpeg"
+                      alt="PayKaya: encomenda e entrega"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>PayKaya 3</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">02</span>
                 </div>
-                <h3>PayKaya</h3>
-                <p>
-                  Plataforma de marketplace digital que conecta consumidores,
-                  comerciantes e serviços de entrega, permitindo descobrir lojas
-                  próximas, explorar produtos e realizar encomendas num único
-                  ambiente. O projeto visa digitalizar o comércio local e
-                  simplificar as compras.
-                </p>
-                <ul class="tags">
-                  <li>Flutter</li>
-                  <li>Dart</li>
-                  <li>Firebase Auth</li>
-                  <li>UI/UX</li>
-                </ul>
-                <div class="foot"><span>Mobile · Marketplace</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Marketplace mobile</span
+                    ><span class="status s-progress">Fase de testes</span>
+                  </div>
+                  <h3 translate="no">PayKaya</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        O comércio local não tem presença digital e o cliente
+                        não sabe que lojas existem perto dele, nem como
+                        encomendar.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Um marketplace único em Flutter: descobrir lojas
+                        próximas, explorar produtos e encomendar com entrega,
+                        com contas seguras via Firebase Auth.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>Flutter</li>
+                    <li>Dart</li>
+                    <li>Firebase Auth</li>
+                    <li>UI/UX</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Mobile · Marketplace</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="paykaya"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article class="card project" data-project="livromoz">
-              <div class="media">
-                <figure class="shot browser">
-                  <img src="img/Biblioteca.jpg" alt="LivroMoz" loading="lazy" />
-                </figure>
-                <span class="num">03</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Plataforma de leitura</span
-                  ><span class="status s-progress">Fase de testes</span>
+            <li>
+              <article class="card project" data-project="livromoz">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/Biblioteca.jpg"
+                      alt="Ecrã da plataforma LivroMoz"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>LivroMoz</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">03</span>
                 </div>
-                <h3>LivroMoz</h3>
-                <p>
-                  Plataforma digital que democratiza o acesso à literatura e ao
-                  conhecimento, conectando leitores a livros e conteúdos
-                  educativos e valorizando a literatura nacional em Moçambique.
-                </p>
-                <ul class="tags">
-                  <li>Flutter</li>
-                  <li>Firebase</li>
-                  <li>Conteúdo digital</li>
-                </ul>
-                <div class="foot"><span>Produto · Leitura</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Plataforma de leitura</span
+                    ><span class="status s-progress">Fase de testes</span>
+                  </div>
+                  <h3 translate="no">LivroMoz</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        Falta acesso fácil a livros e conteúdos educativos, e a
+                        literatura moçambicana tem pouca visibilidade.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Plataforma digital em Flutter e Firebase que liga
+                        leitores a livros e conteúdos, com espaço dedicado à
+                        literatura nacional.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>Flutter</li>
+                    <li>Firebase</li>
+                    <li>Conteúdo digital</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Produto · Leitura</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="livromoz"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article class="card project" data-project="educacao">
-              <div class="media">
-                <figure class="shot browser">
-                  <img
-                    src="img/Sistema de Educacao.png"
-                    alt="Sistema de Educação"
-                    loading="lazy"
-                  />
-                </figure>
-                <span class="num">04</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Educação</span
-                  ><span class="status s-progress">Em desenvolvimento</span>
+            <li>
+              <article class="card project" data-project="educacao">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/Sistema%20de%20Educacao.png"
+                      alt="Ecrã da plataforma Educação Digital"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>Educação Digital</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">04</span>
                 </div>
-                <h3>Educação Digital</h3>
-                <p>
-                  Plataforma educativa concebida para fortalecer a interação
-                  entre alunos e docentes, facilitando a comunicação, a partilha
-                  de materiais de estudo e o acompanhamento da aprendizagem.
-                </p>
-                <ul class="tags">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                </ul>
-                <div class="foot"><span>Produto · Educação</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Educação</span
+                    ><span class="status s-progress">Em desenvolvimento</span>
+                  </div>
+                  <h3>Educação Digital</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        A comunicação entre alunos e docentes, os materiais de
+                        estudo e o acompanhamento da aprendizagem ficam
+                        dispersos.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Plataforma web em HTML, CSS e JavaScript que centraliza
+                        a comunicação, a partilha de materiais e o
+                        acompanhamento num só lugar.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Produto · Educação</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="educacao"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article class="card project" data-project="erp">
-              <div class="media">
-                <figure class="shot browser">
-                  <img src="img/ERP.jpg" alt="Sistemas ERP" loading="lazy" />
-                </figure>
-                <span class="num">05</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Gestão empresarial</span
-                  ><span class="status s-done">Implementado</span>
+            <li>
+              <article class="card project" data-project="erp">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/ERP.jpg"
+                      alt="Interface do sistema ERP"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>Sistemas ERP</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">05</span>
                 </div>
-                <h3>Sistemas ERP</h3>
-                <p>
-                  Sistemas ERP com Java e tecnologias web, orientados para a
-                  integração de dados, automatização de processos e otimização
-                  da gestão empresarial, centralizando a informação num único
-                  sistema.
-                </p>
-                <ul class="tags">
-                  <li>Java</li>
-                  <li>HTML</li>
-                  <li>Java Web</li>
-                  <li>SQL</li>
-                  <li>Modelação de Dados</li>
-                  <li>Gestão de Processos</li>
-                </ul>
-                <div class="foot"><span>Dados · Negócio</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Gestão empresarial</span
+                    ><span class="status s-done">Implementado</span>
+                  </div>
+                  <h3>Sistemas ERP</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        Dados e processos espalhados por vários sítios obrigam a
+                        trabalho manual e impedem uma visão única do negócio.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        ERP em Java e tecnologias web, com SQL e modelação de
+                        dados: integra a informação, automatiza processos e
+                        centraliza a gestão num único sistema.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>Java</li>
+                    <li>HTML</li>
+                    <li>Java Web</li>
+                    <li>SQL</li>
+                    <li>Modelação de Dados</li>
+                    <li>Gestão de Processos</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Dados · Negócio</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="erp"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article class="card project" data-project="rac">
-              <div class="media">
-                <figure class="shot browser">
-                  <img
-                    src="img/rac-Base.jpg"
-                    alt="Base de dados RAC Seguros"
-                    loading="lazy"
-                  />
-                </figure>
-                <span class="num">06</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Sistema de dados</span
-                  ><span class="status s-done">Implementado</span>
+            <li>
+              <article class="card project" data-project="rac">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/image.png"
+                      alt="Modelo da base de dados da RAC Seguros"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>RAC Seguros</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">06</span>
                 </div>
-                <h3>RAC Seguros</h3>
-                <p>
-                  Desenvolvi e implementei uma base de dados em MySQL que
-                  substituiu o registo manual em papel por informação digital
-                  estruturada, facilitando a organização, consulta e recuperação
-                  de registos e melhorando a eficiência na gestão da informação.
-                </p>
-                <ul class="tags">
-                  <li>MySQL</li>
-                  <li>SQL</li>
-                  <li>Modelação de Dados</li>
-                  <li>Segurança de Bases de Dados</li>
-                  <li>Controlo de Acessos</li>
-                  <li>Gestão de Permissões</li>
-                  <li>Proteção de Dados</li>
-                  <li>Prevenção de SQL Injection</li>
-                  <li>Backups e Recuperação</li>
-                  <li>Encriptação</li>
-                </ul>
-                <div class="foot"><span>Dados · Processos</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Sistema de dados</span
+                    ><span class="status s-done">Implementado</span>
+                  </div>
+                  <h3 translate="no">RAC Seguros</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        Os registos viviam em papel: difíceis de organizar,
+                        consultar e recuperar.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Base de dados MySQL modelada de raiz, com controlo de
+                        acessos, backups e recuperação, encriptação e prevenção
+                        de SQL Injection. Implementada e a substituir o papel.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>MySQL</li>
+                    <li>Modelação de Dados</li>
+                    <li>Controlo de Acessos</li>
+                    <li>Backups e Recuperação</li>
+                    <li>Encriptação</li>
+                    <li>Prevenção de SQL Injection</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Dados · Processos</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="rac"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article class="card project" data-project="authstarter">
-              <div class="media">
-                <figure class="shot browser">
-                  <img
-                    src="img/AuthStarter.png"
-                    alt="AuthStarter Pro"
-                    loading="lazy"
-                  />
-                </figure>
-                <span class="num">07</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Template web</span
-                  ><span class="status s-done">Concluído</span>
+            <li>
+              <article class="card project" data-project="authstarter">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/AuthStarter.png"
+                      alt="Páginas de login do AuthStarter Pro"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>AuthStarter Pro</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">07</span>
                 </div>
-                <h3>AuthStarter Pro</h3>
-                <p>
-                  Template reutilizável para acelerar a autenticação em
-                  aplicações web: login, registo, confirmação de e-mail,
-                  recuperação de palavra-passe e páginas protegidas.
-                </p>
-                <ul class="tags">
-                  <li>Vite</li>
-                  <li>JavaScript</li>
-                  <li>Firebase</li>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                </ul>
-                <div class="foot"><span>Produto digital · Web</span></div>
-              </div>
-            </article>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Template web</span
+                    ><span class="status s-done">Concluído</span>
+                  </div>
+                  <h3 translate="no">AuthStarter Pro</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        Cada nova aplicação web obriga a refazer do zero o
+                        login, o registo e a recuperação de palavra-passe.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Template reutilizável com Vite e Firebase: login,
+                        registo, confirmação de e-mail, recuperação de
+                        palavra-passe e páginas protegidas, prontos a usar.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>Vite</li>
+                    <li>JavaScript</li>
+                    <li>Firebase</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Produto digital · Web</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="authstarter"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
 
-            <article class="card project" data-project="maputo-drinks">
-              <div class="media">
-                <figure class="shot browser">
-                  <img
-                    src="img/Maputo drinks.png"
-                    alt="Maputo Drinks"
-                    loading="lazy"
-                  />
-                </figure>
-                <span class="num">08</span>
-              </div>
-              <div class="body">
-                <div class="top-line">
-                  <span class="type">Delivery de bebidas</span
-                  ><span class="status s-learning">Em desenvolvimento</span>
+            <li>
+              <article class="card project" data-project="maputo-drinks">
+                <div class="media">
+                  <figure class="shot browser">
+                    <img
+                      src="img/Maputo%20drinks.png"
+                      alt="Ecrã do marketplace Maputo Drinks"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption>Maputo Drinks</figcaption>
+                  </figure>
+                  <span class="num" aria-hidden="true">08</span>
                 </div>
-                <h3>Maputo Drinks</h3>
-                <p>
-                  Marketplace digital que conecta bottle stores aos
-                  consumidores, promovendo a digitalização do comércio de
-                  bebidas. O projeto procura ampliar a visibilidade dos
-                  estabelecimentos e simplificar a descoberta de produtos e
-                  encomendas.
-                </p>
-                <ul class="tags">
-                  <li>Flutter</li>
-                  <li>Firebase / Firestore</li>
-                  <li>GitHub Actions</li>
-                </ul>
-                <div class="foot">
-                  <span>Flutter · Dart · Workflows · Automação</span>
+                <div class="body">
+                  <div class="top-line">
+                    <span class="type">Delivery de bebidas</span
+                    ><span class="status s-progress">Em desenvolvimento</span>
+                  </div>
+                  <h3 translate="no">Maputo Drinks</h3>
+                  <div class="ps">
+                    <div class="prob">
+                      <h4>Problema</h4>
+                      <p>
+                        As bottle stores têm pouca visibilidade online e o
+                        consumidor tem dificuldade em descobrir produtos e
+                        encomendar.
+                      </p>
+                    </div>
+                    <div class="sol">
+                      <h4>Solução</h4>
+                      <p>
+                        Marketplace em Flutter e Firestore que reúne
+                        estabelecimentos e produtos num só sítio, com GitHub
+                        Actions a automatizar o fluxo de desenvolvimento.
+                      </p>
+                    </div>
+                  </div>
+                  <ul class="tags">
+                    <li>Flutter</li>
+                    <li>Firebase / Firestore</li>
+                    <li>GitHub Actions</li>
+                  </ul>
+                  <div class="foot">
+                    <span>Mobile · Marketplace · Automação</span
+                    ><button
+                      type="button"
+                      class="readme-btn"
+                      data-readme="maputo-drinks"
+                      aria-haspopup="dialog"
+                    >
+                      README.md ↗
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </article>
-          </div>
+              </article>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section class="section container reveal" id="competencias">
+      <section
+        class="section container reveal"
+        id="competencias"
+        aria-labelledby="t-comp"
+      >
         <div class="heading">
           <p class="eyebrow">04 / Competências</p>
-          <h2>As ferramentas por trás <span class="grad">das ideias.</span></h2>
+          <h2 id="t-comp">
+            As ferramentas por trás <span class="grad">das ideias.</span>
+          </h2>
           <p>Tecnologias com que já trabalhei ou que estou a aprofundar.</p>
         </div>
-        <div class="skills">
-          <article class="skill">
+        <ul class="skills">
+          <li class="skill">
             <span class="skill-icon" aria-hidden="true">&lt;/&gt;</span>
             <h3>Desenvolvimento</h3>
             <p>
               Flutter, Dart, HTML, CSS, JavaScript, PHP, Java e fundamentos de
               React Native.
             </p>
-          </article>
-          <article class="skill">
+          </li>
+          <li class="skill">
             <span class="skill-icon" aria-hidden="true">▤</span>
             <h3>Dados &amp; Backend</h3>
             <p>
               MySQL, Oracle SQL, Firebase Authentication, Cloud Firestore,
               Firebase Storage, modelação de dados, JSON, Node.js, CRUD e APIs.
             </p>
-          </article>
-          <article class="skill">
+          </li>
+          <li class="skill">
             <span class="skill-icon" aria-hidden="true">↻</span>
             <h3>DevOps &amp; Git</h3>
             <p>
               Git, GitHub, YAML, GitHub Actions, testes automatizados e
               conceitos de CI/CD.
             </p>
-          </article>
-          <article class="skill">
+          </li>
+          <li class="skill">
             <span class="skill-icon" aria-hidden="true">⌁</span>
             <h3>Infraestrutura &amp; Segurança</h3>
             <p>
               Redes, DNS, serviços de domínio, diagnóstico técnico e fundamentos
               de cibersegurança.
             </p>
-          </article>
-        </div>
+          </li>
+        </ul>
       </section>
 
-      <section class="contact" id="contacto">
+      <section class="contact" id="contacto" aria-labelledby="t-cont">
         <div class="container reveal">
           <p class="eyebrow">05 / Contacto</p>
-          <h2>
+          <h2 id="t-cont">
             Vamos construir<br /><span class="grad">algo com impacto.</span>
           </h2>
           <p class="desc">
-            Aberto a estágio curricular, desenvolvimento de software,
+            Aberto a estágio Profissional, desenvolvimento de software,
             colaboração em projetos e novas oportunidades de aprendizagem.
           </p>
           <div class="actions">
@@ -1541,18 +2233,20 @@
             >
             <a
               class="btn btn-secondary"
-              href="https://www.linkedin.com/in/shelton-mindo-64147b34a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
               target="_blank"
               rel="noopener noreferrer"
-              >LinkedIn ↗</a
+              >LinkedIn<span class="sr-only"> (abre num novo separador)</span>
+              ↗</a
             >
-            <a
+            <button
+              type="button"
               class="btn btn-secondary"
-              href="https://github.com/O-TEU-USER"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub ↗</a
+              data-readme="alwayz"
+              aria-haspopup="dialog"
             >
+              READMEs dos projetos ↗
+            </button>
           </div>
         </div>
       </section>
@@ -1560,7 +2254,7 @@
 
     <footer class="site-footer">
       <div class="container footer">
-        <a class="brand" href="#inicio"
+        <a class="brand" href="#inicio" translate="no"
           ><span class="brand-mark" aria-hidden="true">S</span>shelton<b
             >.dev</b
           ></a
@@ -1570,14 +2264,747 @@
       </div>
     </footer>
 
+    <template id="rd-alwayz" data-title="Alwayz"
+      ><h1>Alwayz</h1>
+      <p class="rd-pills">
+        <span class="status s-progress">Fase de testes</span
+        ><span class="type">Aplicação mobile</span>
+      </p>
+      <blockquote>
+        Aplicação de streaming de filmes e séries em Flutter e Firebase.
+      </blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        Explorar filmes e séries exige uma experiência rápida e organizada. Sem
+        arquitetura clara, uma app de streaming torna-se difícil de evoluir.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Uma app modular: estado gerido com Provider, contas com Firebase Auth e
+        catálogo e média na cloud (Firestore e Storage).
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Registo e início de sessão de utilizadores</li>
+        <li>Exploração de filmes e séries</li>
+        <li>Dados e ficheiros guardados na cloud</li>
+        <li>Interface moderna, pensada para usabilidade</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li>
+          <code>App Flutter · Provider</code> → <code>Firebase Auth</code>
+        </li>
+        <li>
+          <code>App Flutter · Provider</code> → <code>Cloud Firestore</code>
+        </li>
+        <li>
+          <code>App Flutter · Provider</code> → <code>Firebase Storage</code>
+        </li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>Flutter</code>, <code>Dart</code>, <code>Provider</code>,
+        <code>Firebase Auth</code>, <code>Cloud Firestore</code>,
+        <code>Firebase Storage</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>Provider</strong> para o estado: leve e suficiente para
+          separar UI e lógica sem complexidade extra.
+        </li>
+        <li>
+          <strong>Firebase</strong> como backend gerido: permite focar no
+          produto e não na infraestrutura.
+        </li>
+        <li>
+          <strong>Estrutura modular</strong> para acrescentar funcionalidades
+          sem reescrever o que já existe.
+        </li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/Alwayz.jpeg"
+          alt="Captura de ecrã de Alwayz"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Fase de testes</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Organizar uma app Flutter por módulos e ligar autenticação e dados na
+        cloud de ponta a ponta.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-paykaya" data-title="PayKaya"
+      ><h1>PayKaya</h1>
+      <p class="rd-pills">
+        <span class="status s-progress">Fase de testes</span
+        ><span class="type">Marketplace mobile</span>
+      </p>
+      <blockquote>
+        Marketplace mobile que liga consumidores, comerciantes e serviços de
+        entrega.
+      </blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        O comércio local tem pouca presença digital e o cliente não sabe que
+        lojas existem perto dele, nem como encomendar.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Um único ambiente onde se descobrem lojas próximas, se exploram produtos
+        e se faz a encomenda com entrega.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Descoberta de lojas próximas</li>
+        <li>Exploração de produtos</li>
+        <li>Encomenda e acompanhamento da entrega</li>
+        <li>Contas de utilizador seguras</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li><code>Consumidor</code> → <code>App Flutter</code></li>
+        <li><code>Comerciante</code> → <code>App Flutter</code></li>
+        <li><code>App Flutter</code> → <code>Firebase Auth</code></li>
+        <li><code>App Flutter</code> → <code>Serviço de entrega</code></li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>Flutter</code>, <code>Dart</code>, <code>Firebase Auth</code>,
+        <code>UI/UX</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>Três perfis, um fluxo:</strong> consumidor, comerciante e
+          entrega pensados desde o início, para a encomenda não depender de
+          contactos manuais.
+        </li>
+        <li>
+          <strong>Firebase Auth</strong> para não gerir palavras-passe próprias.
+        </li>
+      </ul>
+      <h2>Segurança</h2>
+      <ul>
+        <li>Autenticação delegada ao Firebase Auth</li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/Paykaya.jpeg"
+          alt="Captura de ecrã de PayKaya"
+          loading="lazy"
+          decoding="async"
+        /><img
+          src="img/paykaya01.jpeg"
+          alt="Captura de ecrã de PayKaya"
+          loading="lazy"
+          decoding="async"
+        /><img
+          src="img/paykaya02.jpeg"
+          alt="Captura de ecrã de PayKaya"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Fase de testes</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Desenhar um produto com vários tipos de utilizador e transformar um
+        fluxo de compra real em ecrãs simples.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-livromoz" data-title="LivroMoz"
+      ><h1>LivroMoz</h1>
+      <p class="rd-pills">
+        <span class="status s-progress">Fase de testes</span
+        ><span class="type">Plataforma de leitura</span>
+      </p>
+      <blockquote>
+        Plataforma digital de acesso a livros e conteúdos educativos, com foco
+        na literatura moçambicana.
+      </blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        Falta acesso fácil a livros e conteúdos educativos, e a literatura
+        moçambicana tem pouca visibilidade.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Uma plataforma que liga leitores a livros e conteúdos digitais e dá
+        espaço à literatura nacional.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Biblioteca digital de livros e conteúdos educativos</li>
+        <li>Destaque para autores e obras moçambicanas</li>
+        <li>Contas e dados geridos na cloud</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li><code>App Flutter</code> → <code>Firebase</code></li>
+        <li><code>Firebase</code> → <code>Conteúdo digital</code></li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>Flutter</code>, <code>Firebase</code>,
+        <code>Conteúdo digital</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>Flutter + Firebase</strong>, a mesma base das minhas outras
+          apps, para reutilizar o que já validei.
+        </li>
+        <li>
+          <strong>Conteúdo como dados:</strong> novos livros entram sem alterar
+          a aplicação.
+        </li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/Biblioteca.jpg"
+          alt="Captura de ecrã de LivroMoz"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Fase de testes</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Pensar um produto cultural: organizar conteúdo, descoberta e acesso.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-educacao" data-title="Educação Digital"
+      ><h1>Educação Digital</h1>
+      <p class="rd-pills">
+        <span class="status s-progress">Em desenvolvimento</span
+        ><span class="type">Educação</span>
+      </p>
+      <blockquote>Plataforma web que aproxima alunos e docentes.</blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        A comunicação entre alunos e docentes, os materiais de estudo e o
+        acompanhamento da aprendizagem ficam dispersos.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Uma plataforma web que centraliza a comunicação, a partilha de materiais
+        e o acompanhamento num só lugar.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Comunicação entre alunos e docentes</li>
+        <li>Partilha de materiais de estudo</li>
+        <li>Acompanhamento da aprendizagem</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li><code>Aluno</code> → <code>Plataforma web</code></li>
+        <li><code>Docente</code> → <code>Plataforma web</code></li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p><code>HTML</code>, <code>CSS</code>, <code>JavaScript</code></p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>Web sem dependências pesadas</strong>, acessível em qualquer
+          dispositivo e ligação.
+        </li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/Sistema%20de%20Educacao.png"
+          alt="Captura de ecrã de Educação Digital"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Em desenvolvimento</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Construir uma interface clara para dois tipos de utilizador com
+        necessidades diferentes.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-erp" data-title="Sistemas ERP"
+      ><h1>Sistemas ERP</h1>
+      <p class="rd-pills">
+        <span class="status s-done">Implementado</span
+        ><span class="type">Gestão empresarial</span>
+      </p>
+      <blockquote>
+        Sistemas ERP em Java e tecnologias web para gestão empresarial.
+      </blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        Dados e processos espalhados por vários sítios obrigam a trabalho manual
+        e impedem uma visão única do negócio.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Um ERP que integra a informação, automatiza processos e centraliza a
+        gestão num único sistema.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Integração de dados num único sistema</li>
+        <li>Automatização de processos</li>
+        <li>Gestão centralizada da informação</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li><code>Utilizador</code> → <code>Interface web · Java Web</code></li>
+        <li>
+          <code>Interface web · Java Web</code> →
+          <code>Lógica de negócio · Java</code>
+        </li>
+        <li>
+          <code>Lógica de negócio · Java</code> → <code>Base de dados SQL</code>
+        </li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>Java</code>, <code>HTML</code>, <code>Java Web</code>,
+        <code>SQL</code>, <code>Modelação de dados</code>,
+        <code>Gestão de processos</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>Modelação de dados primeiro:</strong> um bom modelo evita
+          redundância e erros mais tarde.
+        </li>
+        <li>
+          <strong>Um só sistema</strong> como fonte de verdade para a empresa.
+        </li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/ERP.jpg"
+          alt="Captura de ecrã de Sistemas ERP"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Implementado</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Ligar modelação de dados, regras de negócio e interface num sistema
+        completo.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-rac" data-title="RAC Seguros — Base de Dados"
+      ><h1>RAC Seguros — Base de Dados</h1>
+      <p class="rd-pills">
+        <span class="status s-done">Implementado</span
+        ><span class="type">Sistema de dados</span>
+      </p>
+      <blockquote>
+        Base de dados MySQL que substituiu o registo manual em papel.
+      </blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        Os registos viviam em papel: difíceis de organizar, consultar e
+        recuperar.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Uma base de dados MySQL modelada de raiz, com acessos controlados,
+        backups e proteção contra ataques comuns.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Registos digitais estruturados</li>
+        <li>Consulta e recuperação rápidas</li>
+        <li>Controlo de acessos por perfil</li>
+        <li>Backups e recuperação</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li>
+          <code>Utilizadores autorizados</code> →
+          <code>Controlo de acessos</code>
+        </li>
+        <li><code>Controlo de acessos</code> → <code>MySQL</code></li>
+        <li><code>MySQL</code> → <code>Backups</code></li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>MySQL</code>, <code>Modelação de dados</code>,
+        <code>Controlo de acessos</code>, <code>Backups e recuperação</code>,
+        <code>Encriptação</code>, <code>Prevenção de SQL Injection</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>Modelação antes de implementar</strong>, para refletir como a
+          informação realmente circula.
+        </li>
+        <li>
+          <strong>Segurança desde o desenho:</strong> acessos, encriptação e
+          consultas seguras fazem parte da base.
+        </li>
+      </ul>
+      <h2>Segurança</h2>
+      <ul>
+        <li>Controlo de acessos por perfil</li>
+        <li>Encriptação de dados sensíveis</li>
+        <li>Consultas preparadas contra SQL Injection</li>
+        <li>Backups com procedimento de recuperação</li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <p>Sem capturas públicas: o projeto tem dados reais de uma empresa.</p>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Implementado</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Digitalizar um processo real, com responsabilidade sobre dados
+        sensíveis.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-authstarter" data-title="AuthStarter Pro"
+      ><h1>AuthStarter Pro</h1>
+      <p class="rd-pills">
+        <span class="status s-done">Concluído</span
+        ><span class="type">Template web</span>
+      </p>
+      <blockquote>Template web reutilizável de autenticação.</blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        Cada nova aplicação web obriga a refazer do zero o login, o registo e a
+        recuperação de palavra-passe.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Um template pronto a usar, com Vite e Firebase, que traz a autenticação
+        completa em minutos.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Login e registo</li>
+        <li>Confirmação de e-mail</li>
+        <li>Recuperação de palavra-passe</li>
+        <li>Páginas protegidas</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li><code>Browser · Vite</code> → <code>Firebase Auth</code></li>
+        <li><code>Browser · Vite</code> → <code>Rotas protegidas</code></li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>Vite</code>, <code>JavaScript</code>, <code>Firebase</code>,
+        <code>HTML</code>, <code>CSS</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li><strong>Vite</strong> pelo arranque rápido e build leve.</li>
+        <li>
+          <strong>Autenticação delegada</strong> ao Firebase em vez de código
+          próprio de palavras-passe.
+        </li>
+        <li>
+          <strong>Template</strong> para evitar repetir trabalho em cada
+          projeto.
+        </li>
+      </ul>
+      <h2>Segurança</h2>
+      <ul>
+        <li>Palavras-passe nunca passam por código próprio</li>
+        <li>Rotas protegidas para utilizadores autenticados</li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/AuthStarter.png"
+          alt="Captura de ecrã de AuthStarter Pro"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Concluído</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>Transformar um problema repetido em produto reutilizável.</p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    ><template id="rd-maputo-drinks" data-title="Maputo Drinks"
+      ><h1>Maputo Drinks</h1>
+      <p class="rd-pills">
+        <span class="status s-progress">Em desenvolvimento</span
+        ><span class="type">Delivery de bebidas</span>
+      </p>
+      <blockquote>
+        Marketplace que conecta bottle stores aos consumidores.
+      </blockquote>
+      <blockquote>
+        <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
+        Este repositório documenta o problema, a solução e as decisões técnicas.
+      </blockquote>
+      <h2>Problema</h2>
+      <p>
+        As bottle stores têm pouca visibilidade online e o consumidor tem
+        dificuldade em descobrir produtos e encomendar.
+      </p>
+      <h2>Solução</h2>
+      <p>
+        Um marketplace que reúne estabelecimentos e produtos num só sítio e
+        simplifica a descoberta e a encomenda.
+      </p>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li>Descoberta de estabelecimentos e produtos</li>
+        <li>Encomenda simplificada</li>
+        <li>Fluxo de desenvolvimento automatizado</li>
+      </ul>
+      <h2>Arquitetura (visão geral)</h2>
+      <ul class="rd-flow">
+        <li><code>App Flutter</code> → <code>Firestore</code></li>
+        <li><code>GitHub Actions</code> → <code>App Flutter</code></li>
+      </ul>
+      <h2>Tecnologias</h2>
+      <p>
+        <code>Flutter</code>, <code>Firebase / Firestore</code>,
+        <code>GitHub Actions</code>
+      </p>
+      <h2>Decisões técnicas</h2>
+      <ul>
+        <li>
+          <strong>GitHub Actions</strong> para automatizar validações e builds e
+          reduzir erros manuais.
+        </li>
+        <li>
+          <strong>Firestore</strong> para dados que mudam com frequência
+          (produtos, stock).
+        </li>
+      </ul>
+      <h2>Capturas de ecrã</h2>
+      <div class="rd-shots">
+        <img
+          src="img/Maputo%20drinks.png"
+          alt="Captura de ecrã de Maputo Drinks"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <h2>Estado</h2>
+      <ul>
+        <li>Estado atual: <strong>Em desenvolvimento</strong></li>
+      </ul>
+      <h2>O meu papel</h2>
+      <ul>
+        <li>Desenho, desenvolvimento e documentação do projeto.</li>
+      </ul>
+      <h2>O que aprendi</h2>
+      <p>
+        Combinar produto e DevOps: entregar com mais segurança e menos trabalho
+        manual.
+      </p>
+      <h2>Contacto</h2>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        · mindoShelton55@gmail.com
+      </p></template
+    >
+    <dialog class="rd" id="readme-dialog" aria-label="README do projeto">
+      <div class="rd-top">
+        <span aria-hidden="true">📄</span
+        ><span class="rd-file" id="readme-file">README.md</span
+        ><button type="button" class="rd-close" aria-label="Fechar README">
+          ✕
+        </button>
+      </div>
+      <div class="rd-main">
+        <nav class="rd-nav" id="readme-nav" aria-label="Projetos"></nav>
+        <article class="rd-body" id="readme-body" tabindex="0"></article>
+      </div>
+    </dialog>
     <div id="google_translate_element" aria-hidden="true"></div>
+
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+    </style>
 
     <script>
       (() => {
-        const toggle = document.querySelector(".menu-toggle");
-        const nav = document.getElementById("nav-links");
-        const links = [...nav.querySelectorAll('a[href^="#"]')];
+        "use strict";
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+        const root = document.documentElement;
 
+        /* 1. Imagens: se falharem (ou já falharam), mostra a legenda em vez de um ícone partido */
+        $$(".shot img").forEach((img) => {
+          const fail = () => {
+            img.closest(".shot")?.classList.add("no-img");
+            img.remove();
+          };
+          if (img.complete && img.naturalWidth === 0) fail();
+          else img.addEventListener("error", fail, { once: true });
+        });
+
+        /* 2. Menu móvel */
+        const toggle = $(".menu-toggle");
+        const nav = $("#nav-links");
+        const links = $$('a[href^="#"]', nav);
         const setMenu = (open) => {
           nav.classList.toggle("open", open);
           toggle.setAttribute("aria-expanded", String(open));
@@ -1586,129 +3013,200 @@
             open ? "Fechar menu" : "Abrir menu",
           );
           toggle.textContent = open ? "✕" : "☰";
-          document.body.classList.toggle("menu-open", open);
         };
-
         toggle.addEventListener("click", () =>
           setMenu(!nav.classList.contains("open")),
         );
-        links.forEach((link) =>
-          link.addEventListener("click", () => setMenu(false)),
-        );
-
-        document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && nav.classList.contains("open")) {
+        links.forEach((l) => l.addEventListener("click", () => setMenu(false)));
+        document.addEventListener("click", (e) => {
+          if (
+            nav.classList.contains("open") &&
+            !nav.contains(e.target) &&
+            !toggle.contains(e.target)
+          )
+            setMenu(false);
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && nav.classList.contains("open")) {
             setMenu(false);
             toggle.focus();
           }
         });
+        matchMedia("(min-width:701px)").addEventListener(
+          "change",
+          (e) => e.matches && setMenu(false),
+        );
 
-        window
-          .matchMedia("(min-width:701px)")
-          .addEventListener("change", (event) => {
-            if (event.matches) setMenu(false);
-          });
+        $("#year").textContent = new Date().getFullYear();
 
-        document.getElementById("year").textContent = new Date().getFullYear();
-
+        /* 3. Animações de entrada e navegação ativa */
+        const reveals = $$(".reveal");
         if ("IntersectionObserver" in window) {
           const revealer = new IntersectionObserver(
-            (entries, observer) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("in");
-                  observer.unobserve(entry.target);
-                }
+            (entries, obs) => {
+              entries.forEach((en) => {
+                if (!en.isIntersecting) return;
+                en.target.classList.add("in");
+                obs.unobserve(en.target);
               });
             },
-            { threshold: 0.08 },
+            { threshold: 0.01, rootMargin: "0px 0px -8% 0px" },
           );
-
-          document
-            .querySelectorAll(".reveal")
-            .forEach((element) => revealer.observe(element));
-
-          const sections = links
-            .map((link) => document.querySelector(link.getAttribute("href")))
-            .filter(Boolean);
+          reveals.forEach((el) => revealer.observe(el));
 
           const spy = new IntersectionObserver(
             (entries) => {
-              entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                links.forEach((link) => link.removeAttribute("aria-current"));
-                const active = links.find(
-                  (link) => link.getAttribute("href") === "#" + entry.target.id,
-                );
-                if (active) active.setAttribute("aria-current", "true");
+              entries.forEach((en) => {
+                if (!en.isIntersecting) return;
+                links.forEach((l) => l.removeAttribute("aria-current"));
+                links
+                  .find((l) => l.getAttribute("href") === "#" + en.target.id)
+                  ?.setAttribute("aria-current", "location");
               });
             },
             { rootMargin: "-45% 0px -50% 0px" },
           );
-
-          sections.forEach((section) => spy.observe(section));
+          ["inicio", ...links.map((l) => l.getAttribute("href").slice(1))]
+            .map((id) => document.getElementById(id))
+            .filter(Boolean)
+            .forEach((s) => spy.observe(s));
         } else {
-          document
-            .querySelectorAll(".reveal")
-            .forEach((element) => element.classList.add("in"));
+          reveals.forEach((el) => el.classList.add("in"));
+        }
+
+        /* 4. Introdução: fecha sozinha, por botão, Escape ou Enter */
+        const intro = $("#intro");
+        if (intro && root.classList.contains("intro-on")) {
+          const DURATION = 8000; // ms
+          intro.style.setProperty("--intro-ms", DURATION + "ms");
+          const page = [".skip", ".site-header", "#main", ".site-footer"]
+            .map((q) => $(q))
+            .filter(Boolean);
+          page.forEach((el) => el.setAttribute("inert", ""));
+          const btn = $(".intro-skip", intro);
+          btn.focus({ preventScroll: true });
+
+          let done = false;
+          const timer = setTimeout(close, DURATION);
+          function close() {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
+            try {
+              sessionStorage.setItem("introSeen", "1");
+            } catch (e) {}
+            page.forEach((el) => el.removeAttribute("inert"));
+            intro.classList.add("out");
+            setTimeout(() => root.classList.remove("intro-on"), 650);
+          }
+          btn.addEventListener("click", close);
+          document.addEventListener("keydown", (e) => {
+            if (!done && (e.key === "Escape" || e.key === "Enter")) close();
+          });
+        }
+
+        /* 5. Idiomas: cookie "googtrans" + recarregamento (o script do Google só carrega se houver tradução) */
+        const selector = $("#language-selector");
+        if (selector) {
+          const LANGS = ["en", "zh-CN"];
+          const host = location.hostname;
+          const useDomain = host.includes(".") && !/^[\d.]+$/.test(host); // evita domain= em localhost/IP
+          const secure = location.protocol === "https:" ? ";Secure" : "";
+          const write = (value, extra = "") =>
+            (document.cookie = `googtrans=${value};path=/;SameSite=Lax${secure}${extra}`);
+
+          const setLang = (lang) => {
+            if (lang === "pt") {
+              const gone = ";max-age=0";
+              write("", gone);
+              if (useDomain) {
+                write("", `${gone};domain=${host}`);
+                write("", `${gone};domain=.${host}`);
+              }
+            } else {
+              write(`/pt/${lang}`);
+              if (useDomain) write(`/pt/${lang}`, `;domain=${host}`);
+            }
+            location.reload();
+          };
+
+          const saved = (document.cookie.match(/googtrans=\/pt\/([\w-]+)/) ||
+            [])[1];
+          if (saved && LANGS.includes(saved)) {
+            selector.value = saved;
+            root.lang = saved;
+            window.googleTranslateElementInit = () => {
+              new google.translate.TranslateElement(
+                {
+                  pageLanguage: "pt",
+                  includedLanguages: "pt," + LANGS.join(","),
+                  autoDisplay: false,
+                },
+                "google_translate_element",
+              );
+            };
+            const s = document.createElement("script");
+            s.src =
+              "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            s.async = true;
+            s.onerror = () =>
+              console.error("Não foi possível carregar o serviço de tradução.");
+            document.head.appendChild(s);
+          }
+          selector.addEventListener("change", () => setLang(selector.value));
         }
       })();
     </script>
-
     <script>
       (() => {
-        const selector = document.getElementById("language-selector");
-        if (!selector) return;
+        "use strict";
+        const dlg = document.getElementById("readme-dialog");
+        if (!dlg || typeof dlg.showModal !== "function") return;
+        const body = document.getElementById("readme-body");
+        const nav = document.getElementById("readme-nav");
+        const file = document.getElementById("readme-file");
+        const tpls = [...document.querySelectorAll("template[id^='rd-']")];
+        let last = null;
 
-        let googleTranslateReady = false;
-        let requestedLanguage = "pt";
-
-        window.googleTranslateElementInit = function () {
-          new google.translate.TranslateElement(
-            {
-              pageLanguage: "pt",
-              includedLanguages: "pt,en,zh-CN",
-              autoDisplay: false,
-            },
-            "google_translate_element",
-          );
-
-          googleTranslateReady = true;
-
-          if (requestedLanguage !== "pt") {
-            setTimeout(applyTranslation, 500);
-          }
-        };
-
-        function applyTranslation() {
-          const googleSelector = document.querySelector(".goog-te-combo");
-
-          if (!googleTranslateReady || !googleSelector) return false;
-
-          googleSelector.value = requestedLanguage;
-          googleSelector.dispatchEvent(new Event("change", { bubbles: true }));
-          return true;
-        }
-
-        selector.addEventListener("change", function () {
-          requestedLanguage = this.value;
-
-          let attempts = 0;
-          const retry = () => {
-            if (applyTranslation()) return;
-            if (attempts++ < 30) setTimeout(retry, 300);
-          };
-
-          retry();
+        tpls.forEach((t) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.textContent = t.dataset.title;
+          b.dataset.key = t.id.slice(3);
+          b.addEventListener("click", () => show(b.dataset.key));
+          nav.appendChild(b);
         });
 
-        const googleScript = document.createElement("script");
-        googleScript.src =
-          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        googleScript.async = true;
-        googleScript.onerror = () =>
-          console.error("Não foi possível carregar o serviço de tradução.");
-        document.head.appendChild(googleScript);
+        function show(key) {
+          const t = document.getElementById("rd-" + key);
+          if (!t) return;
+          body.replaceChildren(t.content.cloneNode(true));
+          body
+            .querySelectorAll("img")
+            .forEach((i) =>
+              i.addEventListener("error", () => i.remove(), { once: true }),
+            );
+          file.textContent = t.dataset.title + " / README.md";
+          [...nav.children].forEach((b) =>
+            b.setAttribute("aria-current", String(b.dataset.key === key)),
+          );
+          body.scrollTop = 0;
+        }
+
+        document.addEventListener("click", (e) => {
+          const opener = e.target.closest("[data-readme]");
+          if (!opener) return;
+          last = opener;
+          show(opener.dataset.readme);
+          if (!dlg.open) dlg.showModal();
+        });
+        dlg
+          .querySelector(".rd-close")
+          .addEventListener("click", () => dlg.close());
+        dlg.addEventListener("click", (e) => {
+          if (e.target === dlg) dlg.close();
+        });
+        dlg.addEventListener("close", () => last && last.focus());
       })();
     </script>
   </body>
