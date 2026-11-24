@@ -17,8 +17,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-    <!-- TROQUE https://SEU-DOMINIO pelo endereço real (canonical, og:url, og:image, JSON-LD) -->
-    <link rel="canonical" href="https://SEU-DOMINIO/" />
+    <!-- Quando tiver domínio, acrescente: canonical, og:url, og:image (1200x630) e "url" no JSON-LD -->
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2355e2ff'/%3E%3Ctext x='16' y='23' font-size='20' font-weight='800' text-anchor='middle' font-family='sans-serif' fill='%2306111c'%3ES%3C/text%3E%3C/svg%3E"
@@ -30,24 +29,15 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_MZ" />
-    <meta property="og:url" content="https://SEU-DOMINIO/" />
-    <meta property="og:image" content="https://SEU-DOMINIO/img/og-cover.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://SEU-DOMINIO/img/og-cover.png" />
+    <meta name="twitter:card" content="summary" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Shelton Mindo",
-        "url": "https://SEU-DOMINIO/",
         "jobTitle": "Software Developer",
-        "sameAs": [
-          "https://www.linkedin.com/in/shelton-mindo-64147b34a",
-          "https://github.com/O-TEU-USER"
-        ],
+        "sameAs": ["https://www.linkedin.com/in/shelton-mindo-64147b34a"],
         "knowsAbout": [
           "Flutter",
           "Dart",
@@ -586,7 +576,7 @@
         gap: 25px;
         max-width: none;
       }
-      .projects-head > p {
+      .heading.projects-head > p:last-child {
         max-width: 280px;
       }
       .grid {
@@ -989,14 +979,14 @@
         font-size: 0.92rem;
         line-height: 1.7;
       }
-      .rd-body h1 {
+      .rd-body .rd-title {
         margin: 0 0 10px;
         padding-bottom: 0.3em;
         border-bottom: 1px solid var(--border);
         font-size: 1.8rem;
         letter-spacing: -0.03em;
       }
-      .rd-body h2 {
+      .rd-body h3 {
         margin: 26px 0 10px;
         padding-bottom: 0.3em;
         border-bottom: 1px solid var(--border);
@@ -1034,6 +1024,37 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 10px;
+      }
+      .rd-meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 0 0 14px;
+      }
+      .rd-meta > div {
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #0a0e14;
+      }
+      .rd-meta dt {
+        color: var(--cyan);
+        font: 500 0.68rem var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .rd-meta dd {
+        margin: 2px 0 0;
+        font-size: 0.85rem;
+      }
+      .rd-note {
+        border-left-color: var(--cyan) !important;
+      }
+      .exp-tag time {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.72rem;
       }
       .rd-flow {
         list-style: none !important;
@@ -1097,10 +1118,10 @@
       }
       html.intro-on body {
         overflow: hidden;
-        animation: unlock 0s 12s forwards;
+        animation: unlock 0s 9s forwards;
       }
       .intro {
-        --intro-ms: 8000ms;
+        --intro-ms: 5000ms;
         position: fixed;
         inset: 0;
         z-index: 1000;
@@ -1113,7 +1134,7 @@
         transition:
           opacity 0.6s,
           visibility 0.6s;
-        animation: introFail 0s 12s forwards;
+        animation: introFail 0s 9s forwards;
       }
       .intro.out {
         opacity: 0;
@@ -1487,8 +1508,10 @@
             <a class="btn btn-secondary" href="#contacto"
               >Vamos trabalhar juntos ↗</a
             >
-            <!-- Coloque o PDF em cv/Shelton-Mindo-CV.pdf -->
-            <a class="btn btn-secondary" href="cv_SheltonMindo.pdf" download
+            <a
+              class="btn btn-secondary"
+              href="cv_SheltonMindo.pdf"
+              download="CV-Shelton-Mindo.pdf"
               >Descarregar CV ↓</a
             >
           </div>
@@ -1611,13 +1634,14 @@
           <ul class="exp-list">
             <li>
               <article class="card exp">
-                <div class="exp-tag">TI &amp; CIBERSEGURANÇA</div>
+                <div class="exp-tag">
+                  TI &amp; CIBERSEGURANÇA<time datetime="2026-07-03/2026-11-03"
+                    >3 jul – 3 nov 2026 · 4 meses</time
+                  >
+                </div>
                 <div>
                   <h3 translate="no">Movitel</h3>
-                  <!-- Acrescente o período, ex.: "Estágio · Jan–Mar 2025" -->
-                  <p class="role">
-                    Estágio / experiência prática em ambiente de TI
-                  </p>
+                  <p class="role">Estágio profissional em ambiente de TI</p>
                   <p class="exp-desc">
                     Contacto com protocolos de rede, diagnóstico de
                     conectividade, DNS, serviços de domínio e conceitos de
@@ -1635,20 +1659,29 @@
             </li>
             <li>
               <article class="card exp">
-                <div class="exp-tag">BASES DE DADOS</div>
+                <div class="exp-tag">
+                  BASES DE DADOS<time datetime="2026-01-15/2026-06-20"
+                    >15 jan – 20 jun 2026 · 5 meses</time
+                  >
+                </div>
                 <div>
                   <h3 translate="no">RAC Seguros</h3>
-                  <p class="role">Criação e implementação de base de dados</p>
+                  <p class="role">
+                    Administrador Júnior de Bases de Dados · corretora de
+                    seguros
+                  </p>
                   <p class="exp-desc">
-                    Solução para estruturar e digitalizar informação
-                    anteriormente mantida em papel, facilitando a organização e
-                    a consulta dos registos.
+                    Administração, modelação e segurança da base de dados da
+                    corretora. Criei e implementei a solução que estruturou e
+                    digitalizou informação antes mantida em papel, facilitando a
+                    organização e a consulta dos registos.
                   </p>
                   <ul class="tags">
                     <li>Bases de dados</li>
                     <li>Modelação</li>
                     <li>Gestão de informação</li>
                     <li>Digitalização</li>
+                    <li>Administração de BD</li>
                   </ul>
                 </div>
               </article>
@@ -1727,7 +1760,7 @@
                       data-readme="alwayz"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -1807,7 +1840,7 @@
                       data-readme="paykaya"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -1864,7 +1897,7 @@
                       data-readme="livromoz"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -1922,7 +1955,7 @@
                       data-readme="educacao"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -1982,7 +2015,7 @@
                       data-readme="erp"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -2042,7 +2075,7 @@
                       data-readme="rac"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -2101,7 +2134,7 @@
                       data-readme="authstarter"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -2159,7 +2192,7 @@
                       data-readme="maputo-drinks"
                       aria-haspopup="dialog"
                     >
-                      README.md ↗
+                      Ver README.md
                     </button>
                   </div>
                 </div>
@@ -2224,12 +2257,20 @@
             Vamos construir<br /><span class="grad">algo com impacto.</span>
           </h2>
           <p class="desc">
-            Aberto a estágio Profissional, desenvolvimento de software,
+            Aberto a estágio profissional, desenvolvimento de software,
             colaboração em projetos e novas oportunidades de aprendizagem.
           </p>
           <div class="actions">
             <a class="btn btn-primary" href="mailto:mindoShelton55@gmail.com"
               >Enviar e-mail ↗</a
+            >
+            <a
+              class="btn btn-secondary"
+              href="https://wa.me/258844573250?text=Ol%C3%A1%20Shelton%2C%20vi%20o%20teu%20portf%C3%B3lio%20e%20gostava%20de%20falar%20contigo."
+              target="_blank"
+              rel="noopener noreferrer"
+              >WhatsApp<span class="sr-only"> (abre num novo separador)</span>
+              ↗</a
             >
             <a
               class="btn btn-secondary"
@@ -2245,7 +2286,7 @@
               data-readme="alwayz"
               aria-haspopup="dialog"
             >
-              READMEs dos projetos ↗
+              Ver READMEs dos projetos
             </button>
           </div>
         </div>
@@ -2265,7 +2306,7 @@
     </footer>
 
     <template id="rd-alwayz" data-title="Alwayz"
-      ><h1>Alwayz</h1>
+      ><h2 class="rd-title">Alwayz</h2>
       <p class="rd-pills">
         <span class="status s-progress">Fase de testes</span
         ><span class="type">Aplicação mobile</span>
@@ -2273,28 +2314,62 @@
       <blockquote>
         Aplicação de streaming de filmes e séries em Flutter e Firebase.
       </blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Aplicação mobile</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Fase de testes</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>
+            Desenho e desenvolvimento ponta a ponta: interface, lógica e
+            integração com os serviços cloud.
+          </dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Aplicação móvel de streaming desenvolvida em Flutter, com backend gerido
+        no Firebase, atualmente em fase de testes.
+      </p>
+      <h3>Problema</h3>
       <p>
         Explorar filmes e séries exige uma experiência rápida e organizada. Sem
         arquitetura clara, uma app de streaming torna-se difícil de evoluir.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Uma app modular: estado gerido com Provider, contas com Firebase Auth e
         catálogo e média na cloud (Firestore e Storage).
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
       <ul>
-        <li>Registo e início de sessão de utilizadores</li>
-        <li>Exploração de filmes e séries</li>
-        <li>Dados e ficheiros guardados na cloud</li>
-        <li>Interface moderna, pensada para usabilidade</li>
+        <li>Oferecer exploração rápida e organizada de filmes e séries</li>
+        <li>Manter o código modular para evoluir sem reescrever</li>
+        <li>Delegar autenticação e armazenamento a serviços geridos</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos funcionais</h3>
+      <ul>
+        <li>Registo e início de sessão</li>
+        <li>Listagem e exploração de filmes e séries</li>
+        <li>Carregamento de catálogo e média a partir da cloud</li>
+        <li>Gestão da sessão do utilizador</li>
+      </ul>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Interface fluida e consistente</li>
+        <li>Separação entre interface, estado e dados</li>
+        <li>Acesso aos dados condicionado por autenticação</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li>
           <code>App Flutter · Provider</code> → <code>Firebase Auth</code>
@@ -2306,28 +2381,85 @@
           <code>App Flutter · Provider</code> → <code>Firebase Storage</code>
         </li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li><strong>Apresentação:</strong> widgets Flutter e navegação</li>
+        <li>
+          <strong>Estado:</strong> Provider, partilha de estado e reatividade da
+          interface
+        </li>
+        <li>
+          <strong>Dados:</strong> acesso a Firebase Auth, Firestore e Storage
+        </li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li>
+          <code>utilizadores</code>: conta e perfil, ligados ao Firebase Auth
+        </li>
+        <li><code>catálogo</code>: filmes e séries com os seus metadados</li>
+        <li>
+          <code>média</code>: ficheiros no Storage referenciados pelo catálogo
+        </li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Autenticação:</strong> abrir a app → iniciar sessão → Firebase
+          Auth valida → sessão ativa → catálogo
+        </li>
+        <li>
+          <strong>Exploração:</strong> catálogo (Firestore) → escolher título →
+          carregar média (Storage)
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>Flutter</code>, <code>Dart</code>, <code>Provider</code>,
         <code>Firebase Auth</code>, <code>Cloud Firestore</code>,
         <code>Firebase Storage</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
         <li>
-          <strong>Provider</strong> para o estado: leve e suficiente para
-          separar UI e lógica sem complexidade extra.
+          <strong>Provider para o estado.</strong> É uma solução consolidada no
+          ecossistema Flutter para estado de complexidade moderada, com pouco
+          código repetitivo. <em>Trade-off:</em> em apps muito grandes exige
+          mais disciplina de organização.
         </li>
         <li>
-          <strong>Firebase</strong> como backend gerido: permite focar no
-          produto e não na infraestrutura.
+          <strong>Firebase como backend gerido.</strong> Autenticação, base de
+          dados e ficheiros num único serviço, sem servidor próprio.
+          <em>Trade-off:</em> dependência do fornecedor e custos que crescem com
+          o uso.
         </li>
         <li>
-          <strong>Estrutura modular</strong> para acrescentar funcionalidades
-          sem reescrever o que já existe.
+          <strong>Estrutura modular.</strong> Permite acrescentar
+          funcionalidades sem reescrever o que já existe.
+          <em>Trade-off:</em> mais ficheiros e convenções desde o início.
         </li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Segurança</h3>
+      <ul>
+        <li>
+          Autenticação delegada ao Firebase Auth, sem gestão própria de
+          palavras-passe
+        </li>
+      </ul>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>
+          Em fase de testes: validação dos fluxos principais antes de uma versão
+          estável
+        </li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Pesquisa e filtros no catálogo</li>
+        <li>Favoritos e histórico</li>
+        <li>Revisão das regras de segurança do Firestore</li>
+        <li>Pipeline de CI para validar cada alteração</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/Alwayz.jpeg"
@@ -2336,20 +2468,17 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Fase de testes</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>
+        Desenho e desenvolvimento ponta a ponta: interface, lógica e integração
+        com os serviços cloud.
+      </p>
+      <h3>O que aprendi</h3>
       <p>
         Organizar uma app Flutter por módulos e ligar autenticação e dados na
         cloud de ponta a ponta.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2357,10 +2486,17 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
     ><template id="rd-paykaya" data-title="PayKaya"
-      ><h1>PayKaya</h1>
+      ><h2 class="rd-title">PayKaya</h2>
       <p class="rd-pills">
         <span class="status s-progress">Fase de testes</span
         ><span class="type">Marketplace mobile</span>
@@ -2369,55 +2505,126 @@
         Marketplace mobile que liga consumidores, comerciantes e serviços de
         entrega.
       </blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Marketplace mobile</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Fase de testes</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>Desenho de UI/UX e desenvolvimento da aplicação em Flutter.</dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Marketplace móvel em Flutter que liga três intervenientes: o consumidor,
+        o comerciante e a entrega.
+      </p>
+      <h3>Problema</h3>
       <p>
         O comércio local tem pouca presença digital e o cliente não sabe que
         lojas existem perto dele, nem como encomendar.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Um único ambiente onde se descobrem lojas próximas, se exploram produtos
         e se faz a encomenda com entrega.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
       <ul>
-        <li>Descoberta de lojas próximas</li>
-        <li>Exploração de produtos</li>
-        <li>Encomenda e acompanhamento da entrega</li>
-        <li>Contas de utilizador seguras</li>
+        <li>Dar visibilidade digital ao comércio local</li>
+        <li>Permitir descobrir lojas e encomendar num só fluxo</li>
+        <li>Integrar a entrega na experiência de compra</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos funcionais</h3>
+      <ul>
+        <li>Contas seguras de utilizador</li>
+        <li>Descoberta de lojas próximas</li>
+        <li>Exploração de produtos por loja</li>
+        <li>Criação de encomendas</li>
+        <li>Acompanhamento da encomenda e da entrega</li>
+      </ul>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Fluxo de compra com poucos passos</li>
+        <li>Interface clara em ecrãs pequenos</li>
+        <li>Autenticação sem palavras-passe geridas pela aplicação</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li><code>Consumidor</code> → <code>App Flutter</code></li>
         <li><code>Comerciante</code> → <code>App Flutter</code></li>
         <li><code>App Flutter</code> → <code>Firebase Auth</code></li>
         <li><code>App Flutter</code> → <code>Serviço de entrega</code></li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li>
+          <strong>Apresentação:</strong> ecrãs de início (lojas próximas),
+          produtos, encomenda e entrega
+        </li>
+        <li><strong>Lógica:</strong> regras do fluxo de compra e dos perfis</li>
+        <li><strong>Serviços:</strong> Firebase Auth para identidade</li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li><code>utilizadores</code>: consumidores e comerciantes</li>
+        <li>
+          <code>lojas</code>: estabelecimentos descobríveis por proximidade
+        </li>
+        <li><code>produtos</code>: catálogo de cada loja</li>
+        <li><code>encomendas</code>: itens, estado e entrega associada</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Compra:</strong> abrir a app → ver lojas próximas → explorar
+          produtos → encomendar → acompanhar a entrega
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>Flutter</code>, <code>Dart</code>, <code>Firebase Auth</code>,
         <code>UI/UX</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
         <li>
-          <strong>Três perfis, um fluxo:</strong> consumidor, comerciante e
-          entrega pensados desde o início, para a encomenda não depender de
-          contactos manuais.
+          <strong>Descoberta por proximidade como ponto de entrada.</strong> O
+          problema central é o cliente não saber que lojas estão perto.
+          <em>Trade-off:</em> depende de haver lojas registadas e de localização
+          disponível.
         </li>
         <li>
-          <strong>Firebase Auth</strong> para não gerir palavras-passe próprias.
+          <strong>Firebase Auth.</strong> Evita gerir palavras-passe e reduz a
+          superfície de ataque. <em>Trade-off:</em> dependência do fornecedor.
         </li>
       </ul>
-      <h2>Segurança</h2>
+      <h3>Segurança</h3>
       <ul>
         <li>Autenticação delegada ao Firebase Auth</li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>
+          Em fase de testes: validação do fluxo completo, da descoberta à
+          entrega
+        </li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Notificações do estado da encomenda</li>
+        <li>Avaliações de lojas</li>
+        <li>Painel para comerciantes</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/Paykaya.jpeg"
@@ -2436,20 +2643,14 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Fase de testes</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>Desenho de UI/UX e desenvolvimento da aplicação em Flutter.</p>
+      <h3>O que aprendi</h3>
       <p>
         Desenhar um produto com vários tipos de utilizador e transformar um
         fluxo de compra real em ecrãs simples.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2457,10 +2658,17 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
     ><template id="rd-livromoz" data-title="LivroMoz"
-      ><h1>LivroMoz</h1>
+      ><h2 class="rd-title">LivroMoz</h2>
       <p class="rd-pills">
         <span class="status s-progress">Fase de testes</span
         ><span class="type">Plataforma de leitura</span>
@@ -2469,48 +2677,118 @@
         Plataforma digital de acesso a livros e conteúdos educativos, com foco
         na literatura moçambicana.
       </blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Plataforma de leitura</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Fase de testes</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>
+            Desenho e desenvolvimento ponta a ponta: interface, lógica e
+            integração com os serviços cloud.
+          </dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Plataforma digital de leitura pensada para o contexto moçambicano,
+        construída com Flutter e Firebase.
+      </p>
+      <h3>Problema</h3>
       <p>
         Falta acesso fácil a livros e conteúdos educativos, e a literatura
         moçambicana tem pouca visibilidade.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Uma plataforma que liga leitores a livros e conteúdos digitais e dá
         espaço à literatura nacional.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
       <ul>
-        <li>Biblioteca digital de livros e conteúdos educativos</li>
-        <li>Destaque para autores e obras moçambicanas</li>
-        <li>Contas e dados geridos na cloud</li>
+        <li>Democratizar o acesso à literatura e ao conhecimento</li>
+        <li>Valorizar a literatura nacional</li>
+        <li>Reunir livros e conteúdos educativos num só sítio</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos funcionais</h3>
+      <ul>
+        <li>Contas de utilizador</li>
+        <li>Catálogo de livros e conteúdos educativos</li>
+        <li>Leitura e consulta de conteúdos</li>
+        <li>Destaque para obras e autores moçambicanos</li>
+      </ul>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Conteúdo atualizável sem publicar nova versão da app</li>
+        <li>Navegação simples</li>
+        <li>Dados guardados na cloud</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li><code>App Flutter</code> → <code>Firebase</code></li>
         <li><code>Firebase</code> → <code>Conteúdo digital</code></li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li><strong>Apresentação:</strong> ecrãs de descoberta e leitura</li>
+        <li><strong>Dados:</strong> Firebase para contas e catálogo</li>
+        <li>
+          <strong>Conteúdo:</strong> livros e materiais digitais servidos pela
+          cloud
+        </li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li><code>utilizadores</code>: leitores</li>
+        <li><code>livros</code>: obras e metadados</li>
+        <li><code>conteúdos educativos</code>: materiais de apoio</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Leitura:</strong> abrir a app → explorar o catálogo → escolher
+          a obra → ler ou consultar
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>Flutter</code>, <code>Firebase</code>,
         <code>Conteúdo digital</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
         <li>
-          <strong>Flutter + Firebase</strong>, a mesma base das minhas outras
-          apps, para reutilizar o que já validei.
+          <strong>Flutter e Firebase.</strong> É a mesma base usada noutros
+          projetos, o que reaproveita padrões já validados.
+          <em>Trade-off:</em> dependência do ecossistema Firebase.
         </li>
         <li>
-          <strong>Conteúdo como dados:</strong> novos livros entram sem alterar
-          a aplicação.
+          <strong>Conteúdo tratado como dados.</strong> Acrescentar obras passa
+          a ser uma operação de dados e não uma nova versão da app.
+          <em>Trade-off:</em> exige modelo de dados claro e gestão do conteúdo.
         </li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>
+          Em fase de testes, a validar a descoberta e a leitura de conteúdos
+        </li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Pesquisa por título e autor</li>
+        <li>Marcadores e progresso de leitura</li>
+        <li>Modo offline</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/Biblioteca.jpg"
@@ -2519,19 +2797,16 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Fase de testes</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>
+        Desenho e desenvolvimento ponta a ponta: interface, lógica e integração
+        com os serviços cloud.
+      </p>
+      <h3>O que aprendi</h3>
       <p>
         Pensar um produto cultural: organizar conteúdo, descoberta e acesso.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2539,50 +2814,122 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
     ><template id="rd-educacao" data-title="Educação Digital"
-      ><h1>Educação Digital</h1>
+      ><h2 class="rd-title">Educação Digital</h2>
       <p class="rd-pills">
         <span class="status s-progress">Em desenvolvimento</span
         ><span class="type">Educação</span>
       </p>
       <blockquote>Plataforma web que aproxima alunos e docentes.</blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Educação</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Em desenvolvimento</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>Desenho e desenvolvimento do frontend web.</dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Plataforma web em desenvolvimento para aproximar alunos e docentes num
+        único espaço digital.
+      </p>
+      <h3>Problema</h3>
       <p>
         A comunicação entre alunos e docentes, os materiais de estudo e o
         acompanhamento da aprendizagem ficam dispersos.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Uma plataforma web que centraliza a comunicação, a partilha de materiais
         e o acompanhamento num só lugar.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
+      <ul>
+        <li>Fortalecer a interação entre alunos e docentes</li>
+        <li>Centralizar os materiais de estudo</li>
+        <li>Facilitar o acompanhamento da aprendizagem</li>
+      </ul>
+      <h3>Requisitos funcionais</h3>
       <ul>
         <li>Comunicação entre alunos e docentes</li>
         <li>Partilha de materiais de estudo</li>
         <li>Acompanhamento da aprendizagem</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Acessível em qualquer dispositivo com browser</li>
+        <li>Interface simples para dois tipos de utilizador</li>
+        <li>Carregamento leve, adequado a ligações lentas</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li><code>Aluno</code> → <code>Plataforma web</code></li>
         <li><code>Docente</code> → <code>Plataforma web</code></li>
       </ul>
-      <h2>Tecnologias</h2>
-      <p><code>HTML</code>, <code>CSS</code>, <code>JavaScript</code></p>
-      <h2>Decisões técnicas</h2>
       <ul>
+        <li><strong>Apresentação:</strong> HTML e CSS responsivos</li>
         <li>
-          <strong>Web sem dependências pesadas</strong>, acessível em qualquer
-          dispositivo e ligação.
+          <strong>Comportamento:</strong> JavaScript para interação e navegação
         </li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li>
+          <code>alunos</code> e <code>docentes</code>: perfis com necessidades
+          diferentes
+        </li>
+        <li><code>materiais</code>: conteúdos partilhados</li>
+        <li><code>acompanhamento</code>: progresso da aprendizagem</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Partilha:</strong> docente publica material → aluno consulta
+        </li>
+        <li><strong>Comunicação:</strong> mensagem entre aluno e docente</li>
+      </ul>
+      <h3>Tecnologias</h3>
+      <p><code>HTML</code>, <code>CSS</code>, <code>JavaScript</code></p>
+      <h3>Decisões técnicas</h3>
+      <ul>
+        <li>
+          <strong>Web com HTML, CSS e JavaScript.</strong> Chega a qualquer
+          dispositivo com browser, sem instalação. <em>Trade-off:</em> o
+          frontend sozinho não resolve persistência nem autenticação, que
+          dependem do backend escolhido.
+        </li>
+      </ul>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>Em desenvolvimento: funcionalidades a ser construídas por fases</li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Autenticação e perfis por papel</li>
+        <li>Notificações de novos materiais</li>
+        <li>Painel de acompanhamento para docentes</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/Sistema%20de%20Educacao.png"
@@ -2591,20 +2938,14 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Em desenvolvimento</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>Desenho e desenvolvimento do frontend web.</p>
+      <h3>O que aprendi</h3>
       <p>
         Construir uma interface clara para dois tipos de utilizador com
         necessidades diferentes.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2612,10 +2953,17 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
     ><template id="rd-erp" data-title="Sistemas ERP"
-      ><h1>Sistemas ERP</h1>
+      ><h2 class="rd-title">Sistemas ERP</h2>
       <p class="rd-pills">
         <span class="status s-done">Implementado</span
         ><span class="type">Gestão empresarial</span>
@@ -2623,27 +2971,60 @@
       <blockquote>
         Sistemas ERP em Java e tecnologias web para gestão empresarial.
       </blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Gestão empresarial</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Implementado</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>
+            Modelação de dados e desenvolvimento em Java e tecnologias web.
+          </dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Sistemas ERP desenvolvidos em Java e tecnologias web, já implementados,
+        para centralizar a gestão de uma organização.
+      </p>
+      <h3>Problema</h3>
       <p>
         Dados e processos espalhados por vários sítios obrigam a trabalho manual
         e impedem uma visão única do negócio.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Um ERP que integra a informação, automatiza processos e centraliza a
         gestão num único sistema.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
       <ul>
-        <li>Integração de dados num único sistema</li>
-        <li>Automatização de processos</li>
-        <li>Gestão centralizada da informação</li>
+        <li>Integrar dados de diferentes áreas</li>
+        <li>Automatizar processos repetitivos</li>
+        <li>Dar uma visão única do negócio</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos funcionais</h3>
+      <ul>
+        <li>Gestão centralizada da informação</li>
+        <li>Automatização de processos de gestão</li>
+        <li>Consulta e atualização de dados via interface web</li>
+      </ul>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Integridade dos dados</li>
+        <li>Separação de responsabilidades por camadas</li>
+        <li>Manutenção simples</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li><code>Utilizador</code> → <code>Interface web · Java Web</code></li>
         <li>
@@ -2654,23 +3035,58 @@
           <code>Lógica de negócio · Java</code> → <code>Base de dados SQL</code>
         </li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li><strong>Apresentação:</strong> HTML e Java Web</li>
+        <li><strong>Negócio:</strong> regras e processos em Java</li>
+        <li><strong>Dados:</strong> SQL com modelação relacional</li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li>Entidades de negócio modeladas e relacionadas em SQL</li>
+        <li>Chaves e restrições para garantir integridade dos dados</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Pedido:</strong> utilizador → interface web → regra de negócio
+          em Java → consulta ou atualização SQL → resposta
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>Java</code>, <code>HTML</code>, <code>Java Web</code>,
         <code>SQL</code>, <code>Modelação de dados</code>,
         <code>Gestão de processos</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
         <li>
-          <strong>Modelação de dados primeiro:</strong> um bom modelo evita
-          redundância e erros mais tarde.
+          <strong>Modelação de dados primeiro.</strong> Um bom modelo evita
+          redundância e erros mais tarde. <em>Trade-off:</em> exige mais análise
+          antes de começar a programar.
         </li>
         <li>
-          <strong>Um só sistema</strong> como fonte de verdade para a empresa.
+          <strong>Arquitetura em camadas.</strong> Separa interface, regras e
+          dados e facilita a manutenção. <em>Trade-off:</em> mais código
+          estrutural para um sistema pequeno.
+        </li>
+        <li>
+          <strong>Base de dados relacional.</strong> Garante integridade entre
+          entidades relacionadas. <em>Trade-off:</em> menos flexível para dados
+          sem estrutura fixa.
         </li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>Implementado e em utilização</li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Relatórios e indicadores</li>
+        <li>Registo de auditoria das alterações</li>
+        <li>Testes automatizados da lógica de negócio</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/ERP.jpg"
@@ -2679,20 +3095,14 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Implementado</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>Modelação de dados e desenvolvimento em Java e tecnologias web.</p>
+      <h3>O que aprendi</h3>
       <p>
         Ligar modelação de dados, regras de negócio e interface num sistema
         completo.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2700,10 +3110,17 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
-    ><template id="rd-rac" data-title="RAC Seguros — Base de Dados"
-      ><h1>RAC Seguros — Base de Dados</h1>
+    ><template id="rd-rac" data-title="RAC Seguros: Base de Dados"
+      ><h2 class="rd-title">RAC Seguros: Base de Dados</h2>
       <p class="rd-pills">
         <span class="status s-done">Implementado</span
         ><span class="type">Sistema de dados</span>
@@ -2711,28 +3128,72 @@
       <blockquote>
         Base de dados MySQL que substituiu o registo manual em papel.
       </blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <blockquote class="rd-note">
+        <strong>Confidencialidade.</strong> Trabalho feito para uma empresa
+        real. Não se publicam dados, esquema detalhado nem capturas com
+        informação real.
+      </blockquote>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Sistema de dados</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Implementado</dd>
+        </div>
+        <div>
+          <dt>Período</dt>
+          <dd>15 jan – 20 jun 2026</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>
+            Administrador Júnior de Bases de Dados: modelação, implementação,
+            segurança e backups.
+          </dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Trabalho realizado na RAC Seguros, corretora de seguros, de 15 de
+        janeiro a 20 de junho de 2026, como administrador júnior de bases de
+        dados.
+      </p>
+      <h3>Problema</h3>
       <p>
         Os registos viviam em papel: difíceis de organizar, consultar e
         recuperar.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Uma base de dados MySQL modelada de raiz, com acessos controlados,
         backups e proteção contra ataques comuns.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
+      <ul>
+        <li>Digitalizar registos que estavam em papel</li>
+        <li>Garantir confidencialidade e integridade dos dados</li>
+        <li>Assegurar recuperação em caso de falha</li>
+      </ul>
+      <h3>Requisitos funcionais</h3>
       <ul>
         <li>Registos digitais estruturados</li>
         <li>Consulta e recuperação rápidas</li>
         <li>Controlo de acessos por perfil</li>
-        <li>Backups e recuperação</li>
+        <li>Backups e restauro</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Confidencialidade dos dados de clientes</li>
+        <li>Integridade dos registos</li>
+        <li>Recuperabilidade após falha</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li>
           <code>Utilizadores autorizados</code> →
@@ -2741,46 +3202,89 @@
         <li><code>Controlo de acessos</code> → <code>MySQL</code></li>
         <li><code>MySQL</code> → <code>Backups</code></li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li>
+          <strong>Modelo:</strong> esquema relacional construído a partir dos
+          registos em papel
+        </li>
+        <li><strong>Acesso:</strong> perfis e permissões sobre a base</li>
+        <li>
+          <strong>Proteção:</strong> encriptação, consultas seguras e backups
+        </li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li>
+          Entidades e relações conceptualizadas a partir de como a informação
+          circulava em papel
+        </li>
+        <li>O esquema detalhado não é público, por confidencialidade</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Digitalização:</strong> registo em papel → modelação →
+          inserção estruturada → consulta
+        </li>
+        <li>
+          <strong>Recuperação:</strong> backup → procedimento de restauro →
+          verificação
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>MySQL</code>, <code>Modelação de dados</code>,
         <code>Controlo de acessos</code>, <code>Backups e recuperação</code>,
         <code>Encriptação</code>, <code>Prevenção de SQL Injection</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
         <li>
-          <strong>Modelação antes de implementar</strong>, para refletir como a
-          informação realmente circula.
+          <strong>MySQL.</strong> Base relacional adequada a registos
+          estruturados e com relações claras. <em>Trade-off:</em> exige
+          modelação cuidada desde o início.
         </li>
         <li>
-          <strong>Segurança desde o desenho:</strong> acessos, encriptação e
-          consultas seguras fazem parte da base.
+          <strong>Controlo de acessos por perfil.</strong> Cada utilizador só
+          acede ao que precisa (menor privilégio). <em>Trade-off:</em> mais
+          gestão de contas e permissões.
+        </li>
+        <li>
+          <strong>Segurança desde o desenho.</strong> Encriptação e consultas
+          seguras fazem parte da base, não são acrescentadas depois.
+          <em>Trade-off:</em> algum custo de desempenho e de complexidade.
         </li>
       </ul>
-      <h2>Segurança</h2>
+      <h3>Segurança</h3>
       <ul>
         <li>Controlo de acessos por perfil</li>
         <li>Encriptação de dados sensíveis</li>
-        <li>Consultas preparadas contra SQL Injection</li>
+        <li>Prevenção de SQL Injection</li>
         <li>Backups com procedimento de recuperação</li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>Implementado, a substituir o registo em papel</li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Testes periódicos de restauro</li>
+        <li>Registo de auditoria de acessos</li>
+        <li>Monitorização de desempenho</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <p>Sem capturas públicas: o projeto tem dados reais de uma empresa.</p>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Implementado</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>
+        Administrador Júnior de Bases de Dados: modelação, implementação,
+        segurança e backups.
+      </p>
+      <h3>O que aprendi</h3>
       <p>
         Digitalizar um processo real, com responsabilidade sobre dados
         sensíveis.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2788,64 +3292,148 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
     ><template id="rd-authstarter" data-title="AuthStarter Pro"
-      ><h1>AuthStarter Pro</h1>
+      ><h2 class="rd-title">AuthStarter Pro</h2>
       <p class="rd-pills">
         <span class="status s-done">Concluído</span
         ><span class="type">Template web</span>
       </p>
       <blockquote>Template web reutilizável de autenticação.</blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Template web</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Concluído</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>Conceção e desenvolvimento completo do template.</dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Template web concluído que traz a autenticação completa pronta a
+        integrar em novas aplicações.
+      </p>
+      <h3>Problema</h3>
       <p>
         Cada nova aplicação web obriga a refazer do zero o login, o registo e a
         recuperação de palavra-passe.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Um template pronto a usar, com Vite e Firebase, que traz a autenticação
         completa em minutos.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
+      <ul>
+        <li>Eliminar o trabalho repetido de autenticação</li>
+        <li>Entregar um fluxo completo e seguro</li>
+        <li>Ser fácil de integrar em novos projetos</li>
+      </ul>
+      <h3>Requisitos funcionais</h3>
       <ul>
         <li>Login e registo</li>
         <li>Confirmação de e-mail</li>
         <li>Recuperação de palavra-passe</li>
         <li>Páginas protegidas</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Reutilizável entre projetos</li>
+        <li>Arranque e build rápidos</li>
+        <li>Palavras-passe nunca tratadas por código próprio</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li><code>Browser · Vite</code> → <code>Firebase Auth</code></li>
         <li><code>Browser · Vite</code> → <code>Rotas protegidas</code></li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li>
+          <strong>Interface:</strong> páginas de login, registo e recuperação
+          (HTML e CSS)
+        </li>
+        <li><strong>Lógica:</strong> JavaScript e controlo de rotas</li>
+        <li><strong>Identidade:</strong> Firebase Auth</li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li><code>utilizadores</code>: geridos pelo Firebase Auth</li>
+        <li>Estado de sessão que decide o acesso às páginas protegidas</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Registo:</strong> formulário → Firebase Auth cria conta →
+          confirmação por e-mail → login
+        </li>
+        <li>
+          <strong>Recuperação:</strong> pedido → e-mail de redefinição → nova
+          palavra-passe
+        </li>
+        <li>
+          <strong>Acesso:</strong> página protegida → sessão válida? → entra ou
+          volta ao login
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>Vite</code>, <code>JavaScript</code>, <code>Firebase</code>,
         <code>HTML</code>, <code>CSS</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
-        <li><strong>Vite</strong> pelo arranque rápido e build leve.</li>
         <li>
-          <strong>Autenticação delegada</strong> ao Firebase em vez de código
-          próprio de palavras-passe.
+          <strong>Vite.</strong> Arranque rápido e build leve.
+          <em>Trade-off:</em> menos convenções impostas do que frameworks
+          completas.
         </li>
         <li>
-          <strong>Template</strong> para evitar repetir trabalho em cada
-          projeto.
+          <strong>Autenticação delegada ao Firebase.</strong> Evita código
+          próprio de palavras-passe, a parte mais sensível.
+          <em>Trade-off:</em> dependência do fornecedor.
+        </li>
+        <li>
+          <strong>Formato de template.</strong> Evita repetir trabalho em cada
+          projeto. <em>Trade-off:</em> exige manter e documentar o template.
         </li>
       </ul>
-      <h2>Segurança</h2>
+      <h3>Segurança</h3>
       <ul>
         <li>Palavras-passe nunca passam por código próprio</li>
         <li>Rotas protegidas para utilizadores autenticados</li>
+        <li>Confirmação de e-mail no registo</li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>
+          Concluído, com os fluxos principais de autenticação implementados
+        </li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Login social</li>
+        <li>Autenticação em dois fatores</li>
+        <li>Documentação de uso e testes automatizados</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/AuthStarter.png"
@@ -2854,17 +3442,11 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Concluído</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>Conceção e desenvolvimento completo do template.</p>
+      <h3>O que aprendi</h3>
       <p>Transformar um problema repetido em produto reutilizável.</p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
@@ -2872,10 +3454,17 @@
           rel="noopener noreferrer"
           >LinkedIn</a
         >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
+        >
         · mindoShelton55@gmail.com
       </p></template
     ><template id="rd-maputo-drinks" data-title="Maputo Drinks"
-      ><h1>Maputo Drinks</h1>
+      ><h2 class="rd-title">Maputo Drinks</h2>
       <p class="rd-pills">
         <span class="status s-progress">Em desenvolvimento</span
         ><span class="type">Delivery de bebidas</span>
@@ -2883,48 +3472,119 @@
       <blockquote>
         Marketplace que conecta bottle stores aos consumidores.
       </blockquote>
-      <blockquote>
+      <blockquote class="rd-note">
         <strong>Estudo de caso.</strong> O código-fonte deste projeto é privado.
-        Este repositório documenta o problema, a solução e as decisões técnicas.
+        Esta página documenta o problema, a solução e as decisões técnicas.
       </blockquote>
-      <h2>Problema</h2>
+      <dl class="rd-meta">
+        <div>
+          <dt>Tipo</dt>
+          <dd>Delivery de bebidas</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd>Em desenvolvimento</dd>
+        </div>
+        <div>
+          <dt>Papel</dt>
+          <dd>
+            Desenho e desenvolvimento ponta a ponta: interface, lógica e
+            integração com os serviços cloud. Automação do fluxo com GitHub
+            Actions.
+          </dd>
+        </div>
+      </dl>
+      <h3>Resumo</h3>
+      <p>
+        Marketplace móvel em desenvolvimento que digitaliza o comércio de
+        bebidas em Maputo, com automação de integração contínua.
+      </p>
+      <h3>Problema</h3>
       <p>
         As bottle stores têm pouca visibilidade online e o consumidor tem
         dificuldade em descobrir produtos e encomendar.
       </p>
-      <h2>Solução</h2>
+      <h3>Solução</h3>
       <p>
         Um marketplace que reúne estabelecimentos e produtos num só sítio e
         simplifica a descoberta e a encomenda.
       </p>
-      <h2>Funcionalidades</h2>
+      <h3>Objetivos</h3>
       <ul>
-        <li>Descoberta de estabelecimentos e produtos</li>
-        <li>Encomenda simplificada</li>
-        <li>Fluxo de desenvolvimento automatizado</li>
+        <li>Ampliar a visibilidade das bottle stores</li>
+        <li>Simplificar a descoberta de produtos</li>
+        <li>Reduzir erros com automação do desenvolvimento</li>
       </ul>
-      <h2>Arquitetura (visão geral)</h2>
+      <h3>Requisitos funcionais</h3>
+      <ul>
+        <li>Descoberta de estabelecimentos</li>
+        <li>Exploração de produtos</li>
+        <li>Encomenda simplificada</li>
+      </ul>
+      <h3>Requisitos não funcionais</h3>
+      <ul>
+        <li>Dados que mudam com frequência (produtos, stock)</li>
+        <li>Entrega de alterações com menos trabalho manual</li>
+        <li>Interface simples em telemóvel</li>
+      </ul>
+      <h3>Arquitetura</h3>
       <ul class="rd-flow">
         <li><code>App Flutter</code> → <code>Firestore</code></li>
         <li><code>GitHub Actions</code> → <code>App Flutter</code></li>
       </ul>
-      <h2>Tecnologias</h2>
+      <ul>
+        <li><strong>Apresentação:</strong> app Flutter</li>
+        <li><strong>Dados:</strong> Firestore, orientado a documentos</li>
+        <li>
+          <strong>Automação:</strong> workflows em YAML com GitHub Actions
+        </li>
+      </ul>
+      <h3>Modelo de dados (conceptual)</h3>
+      <ul>
+        <li><code>estabelecimentos</code>: bottle stores</li>
+        <li><code>produtos</code>: catálogo de cada estabelecimento</li>
+        <li><code>encomendas</code>: pedidos dos consumidores</li>
+      </ul>
+      <h3>Fluxos principais</h3>
+      <ul>
+        <li>
+          <strong>Descoberta:</strong> abrir a app → ver estabelecimentos →
+          explorar produtos → encomendar
+        </li>
+        <li>
+          <strong>Entrega contínua:</strong> alteração no código → GitHub
+          Actions → validação e testes → resultado visível
+        </li>
+      </ul>
+      <h3>Tecnologias</h3>
       <p>
         <code>Flutter</code>, <code>Firebase / Firestore</code>,
         <code>GitHub Actions</code>
       </p>
-      <h2>Decisões técnicas</h2>
+      <h3>Decisões técnicas</h3>
       <ul>
         <li>
-          <strong>GitHub Actions</strong> para automatizar validações e builds e
-          reduzir erros manuais.
+          <strong>GitHub Actions.</strong> Automatiza validações e testes a cada
+          alteração e reduz erros manuais. <em>Trade-off:</em> tempo de
+          configuração inicial dos workflows.
         </li>
         <li>
-          <strong>Firestore</strong> para dados que mudam com frequência
-          (produtos, stock).
+          <strong>Firestore.</strong> Modelo de documentos adequado a dados que
+          mudam com frequência. <em>Trade-off:</em> consultas complexas são
+          menos flexíveis do que em SQL.
         </li>
       </ul>
-      <h2>Capturas de ecrã</h2>
+      <h3>Qualidade e estado</h3>
+      <ul>
+        <li>Em desenvolvimento, com automação do fluxo de integração</li>
+      </ul>
+      <h3>Evolução prevista</h3>
+      <ul>
+        <li>Pagamento e entrega</li>
+        <li>Painel para bottle stores</li>
+        <li>Notificações de encomenda</li>
+      </ul>
+      <h3>Capturas de ecrã</h3>
       <div class="rd-shots">
         <img
           src="img/Maputo%20drinks.png"
@@ -2933,26 +3593,30 @@
           decoding="async"
         />
       </div>
-      <h2>Estado</h2>
-      <ul>
-        <li>Estado atual: <strong>Em desenvolvimento</strong></li>
-      </ul>
-      <h2>O meu papel</h2>
-      <ul>
-        <li>Desenho, desenvolvimento e documentação do projeto.</li>
-      </ul>
-      <h2>O que aprendi</h2>
+      <h3>O meu papel</h3>
+      <p>
+        Desenho e desenvolvimento ponta a ponta: interface, lógica e integração
+        com os serviços cloud. Automação do fluxo com GitHub Actions.
+      </p>
+      <h3>O que aprendi</h3>
       <p>
         Combinar produto e DevOps: entregar com mais segurança e menos trabalho
         manual.
       </p>
-      <h2>Contacto</h2>
+      <h3>Contacto</h3>
       <p>
         <a
           href="https://www.linkedin.com/in/shelton-mindo-64147b34a"
           target="_blank"
           rel="noopener noreferrer"
           >LinkedIn</a
+        >
+        ·
+        <a
+          href="https://wa.me/258844573250"
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp</a
         >
         · mindoShelton55@gmail.com
       </p></template
@@ -3077,7 +3741,7 @@
         /* 4. Introdução: fecha sozinha, por botão, Escape ou Enter */
         const intro = $("#intro");
         if (intro && root.classList.contains("intro-on")) {
-          const DURATION = 8000; // ms
+          const DURATION = 5000; // ms
           intro.style.setProperty("--intro-ms", DURATION + "ms");
           const page = [".skip", ".site-header", "#main", ".site-footer"]
             .map((q) => $(q))
