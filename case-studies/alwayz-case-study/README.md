@@ -1,110 +1,105 @@
 # Alwayz
 
-![Estado](https://img.shields.io/badge/estado-Fase%20de%20testes-1687f8) ![Tipo](https://img.shields.io/badge/tipo-Aplica%C3%A7%C3%A3o%20mobile-55e2ff)
+Base da Fase 1 da plataforma de streaming Alwayz, construída com Flutter, Dart e Firebase.
 
-> Aplicação de streaming de filmes e séries em Flutter e Firebase.
+## Pré-requisitos
 
-> **Estudo de caso.** O código-fonte deste projeto é privado. Este repositório documenta o problema, a solução e as decisões técnicas.
+1. Instalar o Flutter SDK e adicionar `flutter/bin` ao PATH.
+2. Instalar o Firebase CLI.
+3. Ter acesso a um projeto Firebase.
 
-| Campo | Valor |
-|---|---|
-| Tipo | Aplicação mobile |
-| Estado | Fase de testes |
-| Papel | Desenho e desenvolvimento ponta a ponta: interface, lógica e integração com os serviços cloud. |
+Verificar a instalação:
 
-## Resumo
-
-Aplicação móvel de streaming desenvolvida em Flutter, com backend gerido no Firebase, atualmente em fase de testes.
-
-## Problema
-
-Explorar filmes e séries exige uma experiência rápida e organizada. Sem arquitetura clara, uma app de streaming torna-se difícil de evoluir.
-
-## Solução
-
-Uma app modular: estado gerido com Provider, contas com Firebase Auth e catálogo e média na cloud (Firestore e Storage).
-
-## Objetivos
-
-- Oferecer exploração rápida e organizada de filmes e séries
-- Manter o código modular para evoluir sem reescrever
-- Delegar autenticação e armazenamento a serviços geridos
-
-## Requisitos funcionais
-
-- Registo e início de sessão
-- Listagem e exploração de filmes e séries
-- Carregamento de catálogo e média a partir da cloud
-- Gestão da sessão do utilizador
-
-## Requisitos não funcionais
-
-- Interface fluida e consistente
-- Separação entre interface, estado e dados
-- Acesso aos dados condicionado por autenticação
-
-## Arquitetura
-
-```mermaid
-flowchart LR
-  A0["App Flutter · Provider"] --> A1["Firebase Auth"]
-  B0["App Flutter · Provider"] --> B1["Cloud Firestore"]
-  C0["App Flutter · Provider"] --> C1["Firebase Storage"]
+```powershell
+flutter doctor
+flutter --version
+firebase --version
 ```
 
-- **Apresentação:** widgets Flutter e navegação
-- **Estado:** Provider, partilha de estado e reatividade da interface
-- **Dados:** acesso a Firebase Auth, Firestore e Storage
+## Criar a estrutura Flutter
 
-## Modelo de dados (conceptual)
+Como este workspace foi preparado sem o SDK instalado, execute na raiz do projeto:
 
-- `utilizadores`: conta e perfil, ligados ao Firebase Auth
-- `catálogo`: filmes e séries com os seus metadados
-- `média`: ficheiros no Storage referenciados pelo catálogo
+```powershell
+cd "c:\Users\X1 CARBON\OneDrive\Documents\Flutter Dart\Alwayz"
+flutter create . --project-name alwayz
+flutter pub get
+```
 
-## Fluxos principais
+O comando `flutter create .` gera as pastas nativas Android, iOS, Web, Windows, macOS e Linux sem substituir a arquitetura em `lib/`.
 
-- **Autenticação:** abrir a app → iniciar sessão → Firebase Auth valida → sessão ativa → catálogo
-- **Exploração:** catálogo (Firestore) → escolher título → carregar média (Storage)
+## Configurar Firebase
 
-## Tecnologias
+```powershell
+firebase login
+dart pub global activate flutterfire_cli
+flutterfire configure
+```
 
-`Flutter`, `Dart`, `Provider`, `Firebase Auth`, `Cloud Firestore`, `Firebase Storage`
+No assistente, selecione o projeto Firebase e as plataformas que a equipa vai suportar. O comando substitui `lib/firebase_options.dart` pelos valores reais. Não introduza chaves manualmente no código.
 
-## Decisões técnicas
+No Firebase Console:
 
-- **Provider para o estado.** É uma solução consolidada no ecossistema Flutter para estado de complexidade moderada, com pouco código repetitivo. *Trade-off:* em apps muito grandes exige mais disciplina de organização.
-- **Firebase como backend gerido.** Autenticação, base de dados e ficheiros num único serviço, sem servidor próprio. *Trade-off:* dependência do fornecedor e custos que crescem com o uso.
-- **Estrutura modular.** Permite acrescentar funcionalidades sem reescrever o que já existe. *Trade-off:* mais ficheiros e convenções desde o início.
+1. Em Authentication > Sign-in method, ative Email/Password.
+2. Crie a base em Firestore Database.
+3. Ative Storage e configure as regras antes de publicar.
 
-## Segurança
+Depois execute:
 
-- Autenticação delegada ao Firebase Auth, sem gestão própria de palavras-passe
+```powershell
+flutter pub get
+flutter analyze
+flutter run
+```
 
-## Qualidade e estado
+## Estrutura
 
-- Em fase de testes: validação dos fluxos principais antes de uma versão estável
+```text
+lib/
+  main.dart                         # Inicialização Flutter e Firebase
+  firebase_options.dart             # Gerado pelo FlutterFire CLI
+  core/
+    theme/app_theme.dart            # Tema dark/premium
+    constants/app_constants.dart    # Constantes globais
+    utils/                          # Utilitários partilhados
+  models/
+    app_user.dart
+    content_model.dart
+    category_model.dart
+  services/
+    auth_service.dart               # Firebase Authentication
+    firebase_service.dart           # Firestore e Storage
+  repositories/                     # Acesso a dados por domínio
+  providers/
+    auth_provider.dart              # Estado de autenticação
+  pages/
+    firebase_check_page.dart        # Ecrã de verificação da Fase 1
+  widgets/                          # Widgets reutilizáveis
+  admin/                            # Reservado para fase futura
+```
 
-## Evolução prevista
+## O que está incluído
 
-- Pesquisa e filtros no catálogo
-- Favoritos e histórico
-- Revisão das regras de segurança do Firestore
-- Pipeline de CI para validar cada alteração
+- Tema base dark/premium.
+- Inicialização assíncrona do Firebase.
+- `AuthService` com registo, login, logout, utilizador atual e `authStateChanges`.
+- `AuthProvider` com `ChangeNotifier` e Provider.
+- Modelos `AppUser`, `ContentModel` e `CategoryModel`.
+- Dependências de Firebase Authentication, Cloud Firestore e Firebase Storage.
+- Ecrã mínimo que confirma a inicialização ou mostra a configuração pendente.
 
-## Capturas de ecrã
+Catálogo, player, HLS, painel administrativo e pagamentos ficam deliberadamente fora desta fase.
 
-<!-- Coloque as imagens em docs/ e descomente -->
-<!-- ![Ecrã](docs/ecra-1.png) -->
+## Checklist da Fase 1
 
-## O meu papel
-
-Desenho e desenvolvimento ponta a ponta: interface, lógica e integração com os serviços cloud.
-
-## O que aprendi
-
-Organizar uma app Flutter por módulos e ligar autenticação e dados na cloud de ponta a ponta.
-
-## Contacto
-
-[LinkedIn](https://www.linkedin.com/in/shelton-mindo-64147b34a) · [WhatsApp](https://wa.me/258844573250) · mindoShelton55@gmail.com
+- [ ] `flutter doctor` sem problemas bloqueantes.
+- [ ] Projeto criado com o nome `alwayz`.
+- [ ] `flutterfire configure` executado para o projeto Firebase correto.
+- [ ] `firebase_options.dart` contém valores gerados, sem `REPLACE_WITH_`.
+- [ ] Email/Password ativado no Firebase Authentication.
+- [ ] Firestore criado.
+- [ ] Firebase Storage ativado e regras revistas.
+- [ ] `flutter pub get` concluído.
+- [ ] `flutter analyze` sem erros.
+- [ ] `flutter run` abre o ecrã Alwayz.
+- [ ] O ecrã mostra “Firebase inicializado com sucesso.”.
